@@ -8,3 +8,11 @@ class ChoreType(db.Model):
     category = db.Column(db.String(50), nullable=False)
     chore = db.Column(db.String(50), nullable=False)
     description = db.Column(db.Text)
+
+    def to_dict(self):
+        return{
+            'id': self.id,
+            'category': self.category,
+            'chore': self.chore,
+            'description': self.description
+        }

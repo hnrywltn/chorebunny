@@ -1,8 +1,6 @@
 from .db import db
 
 
-
-
 class Chore(db.Model):
     __tablename__ = 'chores'
 
