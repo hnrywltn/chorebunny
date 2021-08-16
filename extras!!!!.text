@@ -4,3 +4,4 @@ FLASK_APP=app
 FLASK_ENV=development
 SECRET_KEY=secretkey
 DATABASE_URL=postgresql://chorebunnydevapp:password@localhost/chorebunnydev
+
