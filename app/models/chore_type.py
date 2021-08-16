@@ -1,12 +1,10 @@
 from .db import db
 
 
-
-
-class ChoreTypes(db.Model):
-    __tablename__ = 'choreTypes'
+class ChoreType(db.Model):
+    __tablename__ = 'chore_types'
 
     id = db.Column(db.Integer, primary_key=True)
-    name = db.Column(db.String(50), nullable=False)
     category = db.Column(db.String(50), nullable=False)
+    chore = db.Column(db.String(50), nullable=False)
     description = db.Column(db.Text)
