@@ -1,6 +1,6 @@
 from app.models import db, ChoreType
 
-def seed_chores():
+def seed_chore_types():
   chore1 = ChoreType(category="Lawn Gardening", chore="Weeding", description="Have weeds in the garden? A bunny can pull them out for you.")
   chore2 = ChoreType(category="Lawn Gardening", chore="Lawn Mowing", description="Need your lawn mowed ? A bunny can chew it away, nice and clean.")
   chore3 = ChoreType(category="Lawn Gardening", chore="Hedge Trimming", description="Those hedges need trimming? Get a bunny to help with that pesky chore.")
@@ -87,6 +87,6 @@ def seed_chores():
 
   db.session.commit()
 
-def undo_chores():
+def undo_chore_types():
     db.session.execute('TRUNCATE chore_types RESTART IDENTITY CASCADE;')
     db.session.commit()
