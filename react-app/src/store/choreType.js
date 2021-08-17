@@ -20,12 +20,12 @@ const load = choreTypes => ({
 //   choreType
 // });
 
-//thunk creator:
-// export const getChoreTypes = () => async (dispatch) => {
-//   const res = await fetch('api/chore_types');
-//   const choreTypes = await res.json();
-//   dispatch(load(choreTypes));
-// }
+// thunk creator:
+export const getChoreTypes = () => async (dispatch) => {
+  const res = await fetch('api/chore_types');
+  const choreTypes = await res.json();
+  dispatch(load(choreTypes));
+}
 
 
 
@@ -46,4 +46,4 @@ const choreTypeReducer = (state = [], action) => {
 
 
 
-// export default choreTypeReducer;
+export default choreTypeReducer;

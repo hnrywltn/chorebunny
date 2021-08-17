@@ -1,11 +1,11 @@
 import { createStore, combineReducers, applyMiddleware, compose } from 'redux';
 import thunk from 'redux-thunk';
 import session from './session';
-// import choreTypeReducer from './choreType';
+import choreTypeReducer from './choreType';
 
 const rootReducer = combineReducers({
   session,
-  // choreType: choreTypeReducer,
+  choreType: choreTypeReducer,
 });
 
 
