@@ -1,6 +1,6 @@
 
 .wrapper {
-    
+    background-color: rgba(6,70,131,255);
     display: grid;
     grid-template-columns: repeat(10, 10vw);
     grid-template-rows: repeat(10, 10vh);
@@ -9,21 +9,37 @@
 }
 .about-us {
     grid-row: 2 / 8;
-    grid-column: 2 / 5;
-    display: flex;
-    background-color: blue;
+    grid-column: 1 / 6;
+    border-radius: 25px;
+    background-color: #0b6fa5b9;
+    box-shadow:0 0 40px 0 #03346c;
+    display: grid;
+    grid-template-columns: repeat(47, 1vw);
+    grid-template-rows: repeat(24, 1vw);
+    /* grid-template-columns: repeat(20, auto);
+    grid-template-rows: repeat(20, auto); */
+    margin: 30px;
 }
 
 .feature-chore {
     grid-row: 2/ 8;
-    grid-column: 7/ 10;
+    grid-column: 6/ 12;
     display: flex;
-    background-color: red;
+    border-radius: 25px;
+    background-color: #0b6fa5b9;
+    box-shadow:0 0 40px 0 #03346c;
+    justify-content: center;
+    margin: 30px;
 }
 
 .about-me-links {
     grid-row: 9 / end;
     grid-column: 1 / end;
     display: flex;
-    background-color: orange;
+    background-color: #239ac4;
+    justify-content: center;
+    
+}
+.image-holder {
+    background-color: black;
 }
