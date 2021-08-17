@@ -3,7 +3,7 @@ import {useEffect} from 'react';
 import { useSelector, useDispatch} from 'react-redux';
 import { Link } from 'react-router-dom';
 import {getChoreTypes} from '../../store/choreType.js';
-import './homepage.css'
+import './homepage.css';
 
 
 function Home() {
@@ -17,527 +17,134 @@ function Home() {
     dispatch(getChoreTypes());
   }, [dispatch]);
 
-  if(!choreTypes) {
-    return <div>Loading...</div>;
-  }
 
+
+// MAKE LINKS GO TO THE CREATE A CHORE FORM!!!!
 
   return (
     <>
-      <h1>Home</h1>
+      <h1 className="homeTitle">ChoreBunny</h1>
       <div className="categoriesContainer">
 
-
-        <div className="cat1 catBox">
-          <h2>cat</h2>
-             <ul>
-              <li>
-                ok
-              </li>
-              <li>
-                ok
-              </li>
-                            <li>
-                ok
-              </li>
-                            <li>
-                ok
-              </li>
-                            <li>
-                ok
-              </li>
-                            <li>
-                ok
-              </li>
-                            <li>
-                ok
-              </li>
-              <li>
-                ok
-              </li>
-              <li>
-                ok
-              </li>
-                            <li>
-                ok
-              </li>
-                            <li>
-                ok
-              </li>
-                            <li>
-                ok
-              </li>
-                            <li>
-                ok
-              </li>
-              <li>
-                ok
-              </li>
-              <li>
-                ok
-              </li>
-              <li>
-                ok
-              </li>
-              <li>
-                ok
-              </li>
-              <li>
-                ok
-              </li>
-                            <li>
-                ok
-              </li>
-             </ul>
+        <div className="catBox">
+          <h2 className="catTitle">{choreTypes[0]?.category}</h2>
+          <ul className="catList">
+            {choreTypes?.slice(0,5).map(choreType => {
+              return (
+                <li key={choreType.id}>
+                  <Link to="home">{choreType.chore}</Link>
+                  <p>{choreType.description}</p>
+                </li>
+              )
+              })
+            }
+          </ul>
         </div>
 
-        <div className="cat2 catBox">
-          <h2>cat</h2>
-          <ul>
-              <li>
-                ok
-              </li>
-              <li>
-                ok
-              </li>
-                            <li>
-                ok
-              </li>
-                            <li>
-                ok
-              </li>
-                            <li>
-                ok
-              </li>
-                            <li>
-                ok
-              </li>
-                            <li>
-                ok
-              </li>
-              <li>
-                ok
-              </li>
-              <li>
-                ok
-              </li>
-                            <li>
-                ok
-              </li>
-                            <li>
-                ok
-              </li>
-                            <li>
-                ok
-              </li>
-                            <li>
-                ok
-              </li>
-              <li>
-                ok
-              </li>
-              <li>
-                ok
-              </li>
-              <li>
-                ok
-              </li>
-              <li>
-                ok
-              </li>
-              <li>
-                ok
-              </li>
-                            <li>
-                ok
-              </li>
-             </ul>
+        <div className="catBox">
+          <h2 className="catTitle">{choreTypes[5]?.category}</h2>
+          <ul className="catList">
+            {choreTypes?.slice(5, 10).map(choreType => {
+              return (
+                <li key={choreType.id}>
+                  <Link to="home">{choreType.chore}</Link>
+                  <p>{choreType.description}</p>
+                </li>
+              )
+              })
+            }
+          </ul>
         </div>
 
-        <div className="cat3 catBox">
-          <h2>cat</h2>
-          <ul>
-              <li>
-                ok
-              </li>
-              <li>
-                ok
-              </li>
-                            <li>
-                ok
-              </li>
-                            <li>
-                ok
-              </li>
-                            <li>
-                ok
-              </li>
-                            <li>
-                ok
-              </li>
-                            <li>
-                ok
-              </li>
-              <li>
-                ok
-              </li>
-              <li>
-                ok
-              </li>
-                            <li>
-                ok
-              </li>
-                            <li>
-                ok
-              </li>
-                            <li>
-                ok
-              </li>
-                            <li>
-                ok
-              </li>
-              <li>
-                ok
-              </li>
-              <li>
-                ok
-              </li>
-              <li>
-                ok
-              </li>
-              <li>
-                ok
-              </li>
-              <li>
-                ok
-              </li>
-                            <li>
-                ok
-              </li>
-             </ul>
+        <div className="catBox">
+          <h2 className="catTitle">{choreTypes[10]?.category}</h2>
+          <ul className="catList">
+            {choreTypes?.slice(10, 15).map(choreType => {
+              return (
+                <li key={choreType.id}>
+                  <Link to="home">{choreType.chore}</Link>
+                  <p>{choreType.description}</p>
+                </li>
+              )
+              })
+            }
+          </ul>
         </div>
 
-        <div className="cat4 catBox">
-          <h2>cat</h2>
-          <ul>
-              <li>
-                ok
-              </li>
-              <li>
-                ok
-              </li>
-                            <li>
-                ok
-              </li>
-                            <li>
-                ok
-              </li>
-                            <li>
-                ok
-              </li>
-                            <li>
-                ok
-              </li>
-                            <li>
-                ok
-              </li>
-              <li>
-                ok
-              </li>
-              <li>
-                ok
-              </li>
-                            <li>
-                ok
-              </li>
-                            <li>
-                ok
-              </li>
-                            <li>
-                ok
-              </li>
-                            <li>
-                ok
-              </li>
-              <li>
-                ok
-              </li>
-              <li>
-                ok
-              </li>
-              <li>
-                ok
-              </li>
-              <li>
-                ok
-              </li>
-              <li>
-                ok
-              </li>
-                            <li>
-                ok
-              </li>
-             </ul>
+        <div className="catBox">
+          <h2 className="catTitle">{choreTypes[15]?.category}</h2>
+          <ul className="catList">
+            {choreTypes?.slice(15, 20).map(choreType => {
+              return (
+                <li key={choreType.id}>
+                  <Link to="home">{choreType.chore}</Link>
+                  <p>{choreType.description}</p>
+                </li>
+              )
+              })
+            }
+          </ul>
         </div>
 
-        <div className="cat5 catBox">
-          <h2>cat</h2>
-          <ul>
-              <li>
-                ok
-              </li>
-              <li>
-                ok
-              </li>
-                            <li>
-                ok
-              </li>
-                            <li>
-                ok
-              </li>
-                            <li>
-                ok
-              </li>
-                            <li>
-                ok
-              </li>
-                            <li>
-                ok
-              </li>
-              <li>
-                ok
-              </li>
-              <li>
-                ok
-              </li>
-                            <li>
-                ok
-              </li>
-                            <li>
-                ok
-              </li>
-                            <li>
-                ok
-              </li>
-                            <li>
-                ok
-              </li>
-              <li>
-                ok
-              </li>
-              <li>
-                ok
-              </li>
-              <li>
-                ok
-              </li>
-              <li>
-                ok
-              </li>
-              <li>
-                ok
-              </li>
-                            <li>
-                ok
-              </li>
-             </ul>
+        <div className="catBox">
+          <h2 className="catTitle">{choreTypes[20]?.category}</h2>
+          <ul className="catList">
+            {choreTypes?.slice(20, 25).map(choreType => {
+              return (
+                <li key={choreType.id}>
+                  <Link to="home">{choreType.chore}</Link>
+                  <p>{choreType.description}</p>
+                </li>
+              )
+              })
+            }
+          </ul>
         </div>
 
-        <div className="cat6 catBox">
-          <h2>cat</h2>
-          <ul>
-              <li>
-                ok
-              </li>
-              <li>
-                ok
-              </li>
-                            <li>
-                ok
-              </li>
-                            <li>
-                ok
-              </li>
-                            <li>
-                ok
-              </li>
-                            <li>
-                ok
-              </li>
-                            <li>
-                ok
-              </li>
-              <li>
-                ok
-              </li>
-              <li>
-                ok
-              </li>
-                            <li>
-                ok
-              </li>
-                            <li>
-                ok
-              </li>
-                            <li>
-                ok
-              </li>
-                            <li>
-                ok
-              </li>
-              <li>
-                ok
-              </li>
-              <li>
-                ok
-              </li>
-              <li>
-                ok
-              </li>
-              <li>
-                ok
-              </li>
-              <li>
-                ok
-              </li>
-                            <li>
-                ok
-              </li>
-             </ul>
+        <div className="catBox">
+          <h2 className="catTitle">{choreTypes[25]?.category}</h2>
+          <ul className="catList">
+            {choreTypes?.slice(25, 30).map(choreType => {
+              return (
+                <li key={choreType.id}>
+                  <Link to="home">{choreType.chore}</Link>
+                  <p>{choreType.description}</p>
+                </li>
+              )
+              })
+            }
+          </ul>
         </div>
 
-        <div className="cat7 catBox">
-          <h2>cat</h2>
-          <ul>
-              <li>
-                ok
-              </li>
-              <li>
-                ok
-              </li>
-                            <li>
-                ok
-              </li>
-                            <li>
-                ok
-              </li>
-                            <li>
-                ok
-              </li>
-                            <li>
-                ok
-              </li>
-                            <li>
-                ok
-              </li>
-              <li>
-                ok
-              </li>
-              <li>
-                ok
-              </li>
-                            <li>
-                ok
-              </li>
-                            <li>
-                ok
-              </li>
-                            <li>
-                ok
-              </li>
-                            <li>
-                ok
-              </li>
-              <li>
-                ok
-              </li>
-              <li>
-                ok
-              </li>
-              <li>
-                ok
-              </li>
-              <li>
-                ok
-              </li>
-              <li>
-                ok
-              </li>
-                            <li>
-                ok
-              </li>
-             </ul>
+        <div className="catBox">
+          <h2 className="catTitle">{choreTypes[30]?.category}</h2>
+          <ul className="catList">
+            {choreTypes?.slice(30, 35).map(choreType => {
+              return (
+                <li key={choreType.id}>
+                  <Link to="home">{choreType.chore}</Link>
+                  <p>{choreType.description}</p>
+                </li>
+              )
+              })
+            }
+          </ul>
         </div>
 
-        <div className="cat8 catBox">
-          <h2>cat</h2>
-          <ul>
-              <li>
-                ok
-              </li>
-              <li>
-                ok
-              </li>
-                            <li>
-                ok
-              </li>
-                            <li>
-                ok
-              </li>
-                            <li>
-                ok
-              </li>
-                            <li>
-                ok
-              </li>
-                            <li>
-                ok
-              </li>
-              <li>
-                ok
-              </li>
-              <li>
-                ok
-              </li>
-                            <li>
-                ok
-              </li>
-                            <li>
-                ok
-              </li>
-                            <li>
-                ok
-              </li>
-                            <li>
-                ok
-              </li>
-              <li>
-                ok
-              </li>
-              <li>
-                ok
-              </li>
-              <li>
-                ok
-              </li>
-              <li>
-                ok
-              </li>
-              <li>
-                ok
-              </li>
-                            <li>
-                ok
-              </li>
-             </ul>
+        <div className="catBox">
+          <h2 className="catTitle">{choreTypes[35]?.category}</h2>
+          <ul className="catList">
+            {choreTypes?.slice(35, 40).map(choreType => {
+              return (
+                <li key={choreType.id}>
+                  <Link to="home">{choreType.chore}</Link>
+                  <p>{choreType.description}</p>
+                </li>
+              )
+              })
+            }
+          </ul>
         </div>
-
-
-
-
-
-
-
 
 
       </div>

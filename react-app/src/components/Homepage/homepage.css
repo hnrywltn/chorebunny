@@ -1,21 +1,48 @@
 
 .categoriesContainer {
     display: grid;
-    grid-gap: 15px;
+    grid-gap: 25px;
     grid-template-columns: repeat(2, 4fr);
     grid-template-rows: auto;
     grid-row: 5 /20;
     grid-column: 2 / 20;
-  
+
   }
-  
+
   .catBox{
     display: flex;
-    justify-content: center;
     align-items: center;
     overflow-y: scroll;
+    flex-direction: column;
     border-radius: 15px;
     border: 1px solid #1f5392fd;
     box-shadow: inset 0 0 10px #0000008e;
+    background-color: #d7dde4ca;
+    font-family: monospace;
+    font-size: 1.2rem;
   }
-  
+
+
+  .homeTitle {
+    font-size: 65px;
+    grid-column: 9 / 13;
+    grid-row: 2 / 5;
+    color: #d1e3f8fd;
+    text-shadow: -1px 5px 2px #0000008e;
+    text-align: center;
+    font-family: monospace;
+  }
+
+
+  .catTitle {
+    font-size: 40px;
+    padding-bottom: 35px;
+    padding-top:20px;
+    color: #48698fb2;
+    text-shadow: -1px 5px 2px #fffdfd8e;
+    font-family: monospace;
+  }
+
+  .bunnyPic {
+    width:90px;
+  }
