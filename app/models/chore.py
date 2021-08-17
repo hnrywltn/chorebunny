@@ -13,3 +13,16 @@ class Chore(db.Model):
     address = db.Column(db.String(250), nullable=False)
     detail = db.Column(db.Text)
     total = db.Column(db.Float)
+
+    def to_dict(self):
+        return{
+            'id': self.id,
+            'bunnyId': self.bunnyId,
+            'userId': self.userId,
+            'choreId': self.choreId,
+            'bunnyComplete': self.bunnyComplete,
+            'userComplete': self.userComplete,
+            'address': self.address,
+            'detail': self.detail,
+            'total': self.total,
+        }
