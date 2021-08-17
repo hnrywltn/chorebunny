@@ -29,8 +29,6 @@ export const getChoreTypes = () => async (dispatch) => {
 
 
 
-
-
 //reducer:
 const choreTypeReducer = (state = [], action) => {
   switch (action.type) {
