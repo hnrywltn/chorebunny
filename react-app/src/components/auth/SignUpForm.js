@@ -5,10 +5,18 @@ import { signUp } from '../../store/session';
 
 const SignUpForm = () => {
   const [errors, setErrors] = useState([]);
+  const [name, setName] = useState('');
   const [username, setUsername] = useState('');
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [repeatPassword, setRepeatPassword] = useState('');
+  const [isBunny, setIsBunny] = useState(false);
+  const [bio, setBio] = useState('');
+  const [address, setAddress] = useState('');
+
+
+
+
   const user = useSelector(state => state.session.user);
   const dispatch = useDispatch();
 
@@ -38,6 +46,22 @@ const SignUpForm = () => {
     setRepeatPassword(e.target.value);
   };
 
+  const updateName = (e) => {
+    setName(e.target.value);
+  };
+
+  const updateIsBunny = (e) => {
+    setIsBunny(e.target.checked);
+  };
+
+  const updateBio = (e) => {
+    setBio(e.target.value);
+  };
+
+  const updateAddress = (e) => {
+    setAddress(e.target.value);
+  };
+
   if (user) {
     return <Redirect to='/' />;
   }
@@ -48,6 +72,10 @@ const SignUpForm = () => {
         {errors.map((error, ind) => (
           <div key={ind}>{error}</div>
         ))}
+      </div>
+      <div>
+        <label>Name</label>
+        <input type='text' value={name} onChange={updateName} />
       </div>
       <div>
         <label>User Name</label>
@@ -65,6 +93,32 @@ const SignUpForm = () => {
           name='email'
           onChange={updateEmail}
           value={email}
+        ></input>
+      </div>
+      <div>
+        <label>Would you like to be Bunny?</label>
+        <input
+          type='checkbox'
+          name='isBunny'
+          onChange={updateIsBunny}
+          checked={isBunny}
+        ></input>
+      </div>
+      <div>
+        <label>Bio</label>
+        <textarea
+          name='bio'
+          onChange={updateBio}
+          value={bio}
+        ></textarea>
+      </div>
+      <div>
+        <label>Address</label>
+        <input
+          type='text'
+          name='address'
+          onChange={updateAddress}
+          value={address}
         ></input>
       </div>
       <div>
@@ -86,6 +140,7 @@ const SignUpForm = () => {
           required={true}
         ></input>
       </div>
+
       <button type='submit'>Sign Up</button>
     </form>
   );
