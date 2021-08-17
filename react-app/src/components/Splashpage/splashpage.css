@@ -14,8 +14,8 @@
     background-color: #0b6fa5b9;
     box-shadow:0 0 40px 0 #03346c;
     display: grid;
-    grid-template-columns: repeat(47, 1vw);
-    grid-template-rows: repeat(24, 1vw);
+    grid-template-columns: repeat(20, 5%);
+    grid-template-rows: repeat(20, 5% );
     /* grid-template-columns: repeat(20, auto);
     grid-template-rows: repeat(20, auto); */
     margin: 30px;
@@ -40,6 +40,9 @@
     justify-content: center;
     
 }
-.image-holder {
-    background-color: black;
+
+.about-logo {
+    grid-row: 2/ 8;
+    grid-column: 6/ 15;
+    width: 450px;
 }
