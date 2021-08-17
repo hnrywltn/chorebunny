@@ -19,21 +19,21 @@ function App() {
     (async () => {
       await dispatch(authenticate());
       setLoaded(true);
-      let result = await fetch('/api/users/1', {
-        method: 'PATCH',
-        headers: {
-          'Content-Type': 'application/json'
-        },
-        body: JSON.stringify({
-          "address": "demo street, demo city, DM",
-          "bio": "Hello, I am the demo user",
-          "email": "demo@aa.io",
-          "isBunny": true,
-          "id": 1,
-          "name": "Demo User",
-          "username": "demo"
-        })
-      })
+      // let result = await fetch('/api/users/1', {
+      //   method: 'PATCH',
+      //   headers: {
+      //     'Content-Type': 'application/json'
+      //   },
+      //   body: JSON.stringify({
+      //     "address": "demo street, demo city, DM",
+      //     "bio": "Hello, I am the demo user",
+      //     "email": "demo@aa.io",
+      //     "isBunny": true,
+      //     "id": 1,
+      //     "name": "Demo User",
+      //     "username": "demo"
+      //   })
+      // })
     })();
   }, [dispatch]);
 
