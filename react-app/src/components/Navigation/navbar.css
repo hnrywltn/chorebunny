@@ -8,6 +8,11 @@
     background-color: #1f539288;
   }
 
+  .bunnyPic {
+    width:90px;
+  }
+
+
   .navbar a {
     text-decoration: none;
     font-family: monospace;

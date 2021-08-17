@@ -20,6 +20,22 @@
     background-color: #d7dde4ca;
     font-family: monospace;
     font-size: 1.2rem;
+    background-image: url(https://img.icons8.com/ultraviolet/40/000000/chevron-down.png);
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: 60px;
+  }
+
+
+
+  ::-webkit-scrollbar {
+    display: none;
+  }
+
+
+
+  Link {
+    color: #1f5392fd;
   }
 
 
@@ -36,13 +52,9 @@
 
   .catTitle {
     font-size: 40px;
-    padding-bottom: 35px;
+    /* padding-bottom: 35px; */
     padding-top:20px;
     color: #48698fb2;
     text-shadow: -1px 5px 2px #fffdfd8e;
     font-family: monospace;
-  }
-
-  .bunnyPic {
-    width:90px;
   }

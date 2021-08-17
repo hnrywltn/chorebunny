@@ -27,6 +27,7 @@ function Home() {
       <div className="categoriesContainer">
 
         <div className="catBox">
+
           <h2 className="catTitle">{choreTypes[0]?.category}</h2>
           <ul className="catList">
             {choreTypes?.slice(0,5).map(choreType => {
@@ -42,6 +43,7 @@ function Home() {
         </div>
 
         <div className="catBox">
+
           <h2 className="catTitle">{choreTypes[5]?.category}</h2>
           <ul className="catList">
             {choreTypes?.slice(5, 10).map(choreType => {
@@ -57,6 +59,7 @@ function Home() {
         </div>
 
         <div className="catBox">
+
           <h2 className="catTitle">{choreTypes[10]?.category}</h2>
           <ul className="catList">
             {choreTypes?.slice(10, 15).map(choreType => {
@@ -72,6 +75,7 @@ function Home() {
         </div>
 
         <div className="catBox">
+
           <h2 className="catTitle">{choreTypes[15]?.category}</h2>
           <ul className="catList">
             {choreTypes?.slice(15, 20).map(choreType => {
@@ -87,6 +91,7 @@ function Home() {
         </div>
 
         <div className="catBox">
+
           <h2 className="catTitle">{choreTypes[20]?.category}</h2>
           <ul className="catList">
             {choreTypes?.slice(20, 25).map(choreType => {
@@ -102,6 +107,7 @@ function Home() {
         </div>
 
         <div className="catBox">
+
           <h2 className="catTitle">{choreTypes[25]?.category}</h2>
           <ul className="catList">
             {choreTypes?.slice(25, 30).map(choreType => {
@@ -117,6 +123,7 @@ function Home() {
         </div>
 
         <div className="catBox">
+
           <h2 className="catTitle">{choreTypes[30]?.category}</h2>
           <ul className="catList">
             {choreTypes?.slice(30, 35).map(choreType => {
@@ -132,6 +139,7 @@ function Home() {
         </div>
 
         <div className="catBox">
+
           <h2 className="catTitle">{choreTypes[35]?.category}</h2>
           <ul className="catList">
             {choreTypes?.slice(35, 40).map(choreType => {
