@@ -48,6 +48,10 @@ def user_update(id):
     user.isBunny = data['isBunny'] if data['isBunny'] else user.isBunny
     user.bio = data['bio'] if data['bio'] else user.bio
     user.address = data['address'] if data['address'] else user.address
+
+    # for prop in data.keys():
+    #     user.prop = data[prop]
+
     db.session.add(user)
     db.session.commit()
     return user.to_dict()

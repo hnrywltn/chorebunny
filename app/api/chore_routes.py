@@ -1,7 +1,8 @@
-from flask import Blueprint, jsonify, request
+from flask import Blueprint, request
 from flask_login import login_required
 from app.models import Chore, db
 from .auth_routes import validation_errors_to_error_messages
+from app.forms import ChoreForm
 
 chore_routes = Blueprint('chores', __name__)
 
@@ -13,19 +14,18 @@ def chore():
 @chore_routes.route('/', methods=['POST'])
 @login_required
 def create_chore():
-    form = CreateChoreForm()
+    form = ChoreForm()
     form['csrf_token'].data = request.cookies['csrf_token']
     if form.validate_on_submit():
         chore = Chore(
-            id = form.data['id'],
-            bunnyId = form.data['bunnyId'],
-            userId =form.data['userId'],
-            choreId =form.data['choreId'],
-            bunnyComplete=form.data['bunnyComplete'],
-            userComplete=form.data['userComplete'],
+            # bunnyId = form.data['bunnyId'],
+            # userId =form.data['userId'],
+            # choreId =form.data['choreId'],
+            # bunnyComplete=form.data['bunnyComplete'],
+            # userComplete=form.data['userComplete'],
             address=form.data['address'],
             detail=form.data['detail'],
-            total=form.data['total']
+            # total=form.data['total']
         )
         db.session.add(chore)
         db.session.commit()
@@ -38,3 +38,16 @@ def chore_delete(id):
     db.session.delete(chore)
     db.session.commit()
     return id
+
+@chore_routes.route('/<int:id>', methods=['PATCH'])
+@login_required
+def chore_update(id):
+    data = request.json
+    chore = Chore.query.get(id)
+
+    chore.address = data['address'] if data['address'] else chore.address
+    chore.detail = data['detail'] if data['detail'] else chore.detail
+
+    db.session.add(chore)
+    db.session.commit()
+    return chore
