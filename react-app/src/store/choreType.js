@@ -21,29 +21,29 @@ const load = choreTypes => ({
 // });
 
 //thunk creator:
-export const getChoreTypes = () => async (dispatch) => {
-  const res = await fetch('api/chore_types');
-  const choreTypes = await res.json();
-  dispatch(load(choreTypes));
-}
+// export const getChoreTypes = () => async (dispatch) => {
+//   const res = await fetch('api/chore_types');
+//   const choreTypes = await res.json();
+//   dispatch(load(choreTypes));
+// }
 
 
 
 
 
-//reducer:
-const choreTypeReducer = (state = [], action) => {
-  switch (action.type) {
-    case LOAD:
-      const newChoreTypes = {...state};
-      action.choreTypes.forEach(choreType => {
-        newChoreTypes[choreType.id] = choreType;
-      });
-      return newChoreTypes;
-    default:
-      return state;
-  }
-}
+// //reducer:
+// const choreTypeReducer = (state = [], action) => {
+//   switch (action.type) {
+//     case LOAD:
+//       const newChoreTypes = {...state};
+//       action.choreTypes.forEach(choreType => {
+//         newChoreTypes[choreType.id] = choreType;
+//       });
+//       return newChoreTypes;
+//     default:
+//       return state;
+//   }
+// }
 
 
-export default choreTypeReducer;
+// export default choreTypeReducer;
