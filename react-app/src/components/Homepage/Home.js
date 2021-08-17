@@ -5,20 +5,21 @@ import { Link } from 'react-router-dom';
 import {getChoreTypes} from '../../store/choreType.js';
 import './homepage.css'
 
+
 function Home() {
-// //bring in choretypes
-//   const dispatch = useDispatch();
-//   const choreTypes = useSelector(state => {
-//     return Object.values(state.choreType);
-//   });
+//bring in choretypes
+  const dispatch = useDispatch();
+  const choreTypes = useSelector(state => {
+    return Object.values(state.choreType);
+  });
 
-//   useEffect(() => {
-//     dispatch(getChoreTypes());
-//   }, [dispatch]);
+  useEffect(() => {
+    dispatch(getChoreTypes());
+  }, [dispatch]);
 
-//   if(!choreTypes) {
-//     return <div>Loading...</div>;
-  // }
+  if(!choreTypes) {
+    return <div>Loading...</div>;
+  }
 
 
   return (
