@@ -10,6 +10,8 @@ const load = choreTypes => ({
   choreTypes
 });
 
+
+
 // const add = choreType => ({
 //   type: ADD_ONE,
 //   choreType
