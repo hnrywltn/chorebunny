@@ -35,7 +35,6 @@ export const getChoreTypes = () => async (dispatch) => {
 const choreTypeReducer = (state = [], action) => {
   switch (action.type) {
     case LOAD:
-      console.log('CHORETYPES IN ACTION!!!!!!!!!', action.choreTypes.chore_types)
       const newChoreTypes = {...state};
       action.choreTypes.chore_types.forEach(choreType => {
         newChoreTypes[choreType.id] = choreType;
