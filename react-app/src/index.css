@@ -113,13 +113,15 @@ body {
   grid-template-rows: auto;
   grid-row: 5 /20;
   grid-column: 2 / 20;
+
 }
 
 .catBox{
   display: flex;
   justify-content: center;
   align-items: center;
-  overflow: scroll;
+  overflow-y: scroll;
   border-radius: 15px;
   border: 1px solid #1f5392fd;
+  box-shadow: inset 0 0 10px #0000008e;
 }
