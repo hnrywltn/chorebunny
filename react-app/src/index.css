@@ -2,7 +2,6 @@
 /* body {
   background-color: #482525;
 } */
-
 /* * this is css reset */
 html, body {
 	margin: 0;
@@ -14,6 +13,7 @@ html, body {
 }
 
 #root {
+  overflow: hidden;
   display: grid;
   height: 100vh;
   width: 100%;

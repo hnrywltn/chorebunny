@@ -1,0 +1,29 @@
+
+.wrapper {
+    
+    display: grid;
+    grid-template-columns: repeat(10, 10vw);
+    grid-template-rows: repeat(10, 10vh);
+    grid-row: 3 / end;
+    grid-column: 1 / end;
+}
+.about-us {
+    grid-row: 2 / 8;
+    grid-column: 2 / 5;
+    display: flex;
+    background-color: blue;
+}
+
+.feature-chore {
+    grid-row: 2/ 8;
+    grid-column: 7/ 10;
+    display: flex;
+    background-color: red;
+}
+
+.about-me-links {
+    grid-row: 9 / end;
+    grid-column: 1 / end;
+    display: flex;
+    background-color: orange;
+}
