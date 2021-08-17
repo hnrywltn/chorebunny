@@ -16,8 +16,7 @@
     display: grid;
     grid-template-columns: repeat(20, 5%);
     grid-template-rows: repeat(20, 5% );
-    /* grid-template-columns: repeat(20, auto);
-    grid-template-rows: repeat(20, auto); */
+    border: 3px solid black;
     margin: 30px;
 }
 
@@ -29,6 +28,7 @@
     background-color: #0b6fa5b9;
     box-shadow:0 0 40px 0 #03346c;
     justify-content: center;
+    border: 3px solid black;
     margin: 30px;
 }
 
@@ -45,4 +45,13 @@
     grid-row: 2/ 8;
     grid-column: 6/ 15;
     width: 450px;
+}
+.about-cb {
+    grid-row: 12 / end;
+    grid-column: 3 / 18;
+    text-align: center;
+    font-size: 30px;
+    color: #ffffff;
+    font-family: monospace;
+    font-weight: bold;
 }
