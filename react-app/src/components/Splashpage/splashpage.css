@@ -16,19 +16,20 @@
     display: grid;
     grid-template-columns: repeat(20, 5%);
     grid-template-rows: repeat(20, 5% );
-    border: 3px solid black;
+    border: 1.5px solid black;
     margin: 30px;
 }
 
 .feature-chore {
     grid-row: 2/ 8;
     grid-column: 6/ 12;
-    display: flex;
     border-radius: 25px;
     background-color: #0b6fa5b9;
     box-shadow:0 0 40px 0 #03346c;
-    justify-content: center;
-    border: 3px solid black;
+    display: grid;
+    grid-template-columns: repeat(20, 5%);
+    grid-template-rows: repeat(20, 5% );
+    border: 1.5px solid black;
     margin: 30px;
 }
 
@@ -51,6 +52,27 @@
     grid-column: 3 / 18;
     text-align: center;
     font-size: 30px;
+    color: #ffffff;
+    font-family: monospace;
+    font-weight: bold;
+}
+
+.feature-title {
+    grid-row: 1/ 5;
+    grid-column: 7/ 15;
+    display: flex;
+    justify-content: center;
+    text-align: center;
+    font-size: 30px;
+    color: #ffffff;
+    font-family: monospace;
+    font-weight: bold;
+}
+
+.features {
+    grid-row: 5 / end;
+    grid-column: 3 / 18;
+    font-size: 15px;
     color: #ffffff;
     font-family: monospace;
     font-weight: bold;
