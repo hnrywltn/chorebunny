@@ -2,6 +2,14 @@
 /* body {
   background-color: #482525;
 } */
+html, body {
+	margin: 0;
+	padding: 0;
+	border: 0;
+	font-size: 100%;
+	font: inherit;
+	vertical-align: baseline;
+}
 
 body {
   display: grid;
