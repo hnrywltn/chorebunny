@@ -9,6 +9,11 @@
 
   }
 
+  .bunnyPic {
+    width:90px;
+  }
+
+
   .navbar a {
     text-decoration: none;
     font-family: monospace;
