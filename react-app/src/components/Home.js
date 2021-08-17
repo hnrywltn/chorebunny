@@ -20,6 +20,8 @@ function Home() {
     return <div>Loading...</div>;
   }
 
+  console.log(choreTypes);
+
   return (
     <>
       <h1>Home</h1>
