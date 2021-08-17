@@ -29,21 +29,21 @@ const load = choreTypes => ({
 
 
 
+//reducer:
+const choreTypeReducer = (state = [], action) => {
+  switch (action.type) {
+    case LOAD:
+      const newChoreTypes = {...state};
+      action.choreTypes.chore_types.forEach(choreType => {
+        newChoreTypes[choreType.id] = choreType;
+      });
+      return newChoreTypes;
+    default:
+      return state;
+  }
+}
 
 
-// //reducer:
-// const choreTypeReducer = (state = [], action) => {
-//   switch (action.type) {
-//     case LOAD:
-//       const newChoreTypes = {...state};
-//       action.choreTypes.forEach(choreType => {
-//         newChoreTypes[choreType.id] = choreType;
-//       });
-//       return newChoreTypes;
-//     default:
-//       return state;
-//   }
-// }
 
 
 // export default choreTypeReducer;
