@@ -1,15 +1,26 @@
 // constants
 const SET_USER = 'session/SET_USER';
 const REMOVE_USER = 'session/REMOVE_USER';
+const EDIT_USER = 'session/EDIT_USER';
+
 
 const setUser = (user) => ({
   type: SET_USER,
   payload: user
 });
 
-const removeUser = () => ({
+const remove = () => ({
   type: REMOVE_USER,
-})
+});
+
+const edit = (user) => ({
+  type: EDIT_USER,
+  payload: user
+});
+
+
+
+
 
 const initialState = { user: null };
 
@@ -65,7 +76,7 @@ export const logout = () => async (dispatch) => {
   });
 
   if (response.ok) {
-    dispatch(removeUser());
+    dispatch(remove());
   }
 };
 
@@ -100,6 +111,34 @@ export const signUp = (username, email, password, name, isBunny, bio, address) =
     return ['An error occurred. Please try again.']
   }
 }
+
+
+//MIGHT NEED SOME WORK!
+export const editUser = payload => async dispatch => {
+  const res = await fetch(`/api/users/${payload.id}`, {
+    method: 'PATCH',
+    headers: {
+      'Content-Type': 'application/json',
+    },
+    body: JSON.stringify(payload),
+  });
+  if(res.ok) {
+    const user = await res.json();
+    dispatch(edit(user));
+    return user;
+  }
+}
+
+
+
+
+
+
+
+
+
+
+
 
 export default function reducer(state = initialState, action) {
   switch (action.type) {
