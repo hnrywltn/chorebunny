@@ -7,7 +7,7 @@ from .auth_routes import validation_errors_to_error_messages
 pricing_routes = Blueprint('pricings', __name__)
 
 @pricing_routes.route('/')
-@login_required
+# @login_required
 def pricing():
   pricing = Pricing.query.all()
   return {'pricing': [price.to_dict() for price in pricing] }

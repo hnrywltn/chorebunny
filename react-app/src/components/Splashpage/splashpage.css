@@ -36,11 +36,11 @@
 .about-me-links {
     grid-row: 9 / end;
     grid-column: 1 / end;
-    display: flex;
     background-color: #239ac4;
-    justify-content: center;
-    
+    display: grid;
+    grid-template-columns: repeat(20, 5vw);
 }
+
 
 .about-logo {
     grid-row: 2/ 8;
@@ -48,7 +48,7 @@
     width: 450px;
 }
 .about-cb {
-    grid-row: 12 / end;
+    grid-row: 10 / end;
     grid-column: 3 / 18;
     text-align: center;
     font-size: 30px;
@@ -76,4 +76,29 @@
     color: #ffffff;
     font-family: monospace;
     font-weight: bold;
+}
+
+.ant {
+    grid-column: 3 / 5;
+}
+
+.henry {
+    grid-column: 5 / 7;
+}
+
+.jojo {
+    grid-column: 7 / 9;
+}
+
+.jc {
+    grid-column: 9 / end;
+}
+
+.about-me{
+    grid-column: 2/ 10;
+}
+.links {
+    grid-column: 10 / end;
+    display: grid;
+    grid-template-columns: repeat(10, 5vw);
 }
