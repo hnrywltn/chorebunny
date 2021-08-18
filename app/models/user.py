@@ -10,7 +10,7 @@ class User(db.Model, UserMixin):
     username = db.Column(db.String(50), nullable=False, unique=True)
     name = db.Column(db.String(50), nullable=False)
     email = db.Column(db.String(50), nullable=False, unique=True)
-    password = db.Column(db.String(250), nullable=False)
+    hashed_password = db.Column(db.String(250), nullable=False)
     isBunny = db.Column(db.Boolean, default=False)
     bio = db.Column(db.Text)
     address = db.Column(db.String(250), nullable=False)
