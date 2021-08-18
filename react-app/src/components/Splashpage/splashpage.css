@@ -1,6 +1,6 @@
 
 .wrapper {
-    background-color: rgba(6,70,131,255);
+    background-color: #436b9c69;
     display: grid;
     grid-template-columns: repeat(10, 10vw);
     grid-template-rows: repeat(10, 10vh);
