@@ -1,9 +1,19 @@
 import './navbar.css'
 import React from 'react';
-import { NavLink } from 'react-router-dom';
+import  ReactDOM  from 'react-dom';
+import { NavLink, Link } from 'react-router-dom';
+import { useSelector } from 'react-redux';
 import LogoutButton from '../auth/LogoutButton';
+import DemoUser from '../Demo/Index';
 
 const NavBar = () => {
+  const user = userSelector((state)=> state.session.user);
+
+  let sessionlinks;
+  if(user){
+    
+  }
+
   return (
     // <nav>
       <div className="navbar">
