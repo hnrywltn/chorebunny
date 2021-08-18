@@ -9,6 +9,7 @@ import UsersList from './components/UsersList';
 import Home from './components/Homepage/Home';
 // import User from './components/User';
 import Profile from './components/Profile/Profile';
+import ChoreTypeSignupForm from './components/ChoreTypeSignup/ChoreTypeSignupForm';
 import Splashpage from './components/Splashpage/Splashpage';
 import { authenticate } from './store/session';
 
@@ -21,6 +22,7 @@ function App() {
       await dispatch(authenticate());
       setLoaded(true);
 //MIGHT NEED TO COMMENT THE REST OF THIS USEEFFECT OUT!
+  //NOW I REMEBER _ WE COMMENTED THIS OUT BECAUSE WE WERE JUST FETCHING
       let result = await fetch('/api/users/1', {
         method: 'PATCH',
         headers: {
@@ -56,6 +58,9 @@ function App() {
         </Route>
         <ProtectedRoute path='/profile' exact={true} >
           <Profile />
+        </ProtectedRoute>
+        <ProtectedRoute path='/chore-type-signup' exact={true} >
+          <ChoreTypeSignupForm />
         </ProtectedRoute>
         <Route path='/splash' exact={true} >
           <Splashpage />

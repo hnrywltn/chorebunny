@@ -61,8 +61,12 @@ const SignUpForm = () => {
   const updateAddress = (e) => {
     setAddress(e.target.value);
   };
+//MIGHT BE TRASH!!
+  if (user && user.isBunny) {
+    return <Redirect to='/chore-type-signup' />;
+  }
 
-  if (user) {
+  if(user) {
     return <Redirect to='/' />;
   }
 

@@ -3,11 +3,14 @@ import thunk from 'redux-thunk';
 import session from './session';
 import choreTypeReducer from './choreType';
 import usersReducer from './user';
+import pricingsReducer from './pricing';
 
 const rootReducer = combineReducers({
   session,
   choreType: choreTypeReducer,
-  users: usersReducer
+  users: usersReducer,
+  pricings: pricingsReducer,
+
 });
 
 

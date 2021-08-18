@@ -10,3 +10,12 @@ class Pricing(db.Model):
     userId = db.Column(db.Integer, db.ForeignKey('users.id'), nullable=False)
     choreId = db.Column(db.Integer, db.ForeignKey('chore_types.id'), nullable=False)
     rate = db.Column(db.Float, nullable=False)
+
+
+    def to_dict(self):
+        return {
+            'id': self.id,
+            'userId': self.userId,
+            'choreId': self.choreId,
+            'rate': self.rate
+        }
