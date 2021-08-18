@@ -18,6 +18,14 @@ function Profile() {
   const users = useSelector(state => {
     return Object.values(state.users);
   });
+  const user = useSelector(state => {
+    return state.session.user;
+  });
+
+  console.log(user.isBunny);
+
+
+
 
 
   useEffect(() => {
@@ -28,11 +36,59 @@ function Profile() {
 
 
 
+  let bunnyDom = null;
+
+  if (user?.isBunny) {
+    bunnyDom = (
+      <div className="profilepage-pricingTable">
+         <h1>PRICING TABLE</h1>
+{/* bring in pricings!!!!!!! and loop through - maybe before this conditional */}
+      </div>
+    )
+  }
+
+
+
+
+
+
 
   return (
-    <>
-      Hello from profile!
-    </>
+    <div className="profilepage">
+
+
+      <div className="profilepage-name">
+        {user.name}
+      </div>
+
+      <div className="profilepage-username">
+        {user.username}
+      </div>
+
+      <div className="profilepage-email">
+        {user.email}
+      </div>
+
+
+      <div className="profilepage-bio">
+        {user.bio}
+      </div>
+
+      <div className="profilepage-chores">
+        <div className="choresInProgress">
+          CHORES IN PROGRESS
+        </div>
+
+        <div className="choresComplete">
+          CHORES COMPLETE
+        </div>
+      </div>
+
+      {bunnyDom}
+
+
+    </div>
+
   );
 }
 export default Profile;
