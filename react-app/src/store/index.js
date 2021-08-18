@@ -2,10 +2,12 @@ import { createStore, combineReducers, applyMiddleware, compose } from 'redux';
 import thunk from 'redux-thunk';
 import session from './session';
 import choreTypeReducer from './choreType';
+import usersReducer from './user';
 
 const rootReducer = combineReducers({
   session,
   choreType: choreTypeReducer,
+  users: usersReducer
 });
 
 
