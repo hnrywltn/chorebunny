@@ -23,7 +23,6 @@ function Home() {
 
   return (
     <>
-      <h1 className="homeTitle">ChoreBunny</h1>
       <div className="categoriesContainer">
 
         <div className="catBox">

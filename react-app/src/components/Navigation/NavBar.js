@@ -13,9 +13,11 @@ const NavBar = ({ isLoaded }) => {
   if(user){
     sessionlinks = (
       <div className="navbar">
+        <h1 className="homeTitle">ChoreBunny</h1>
         <NavLink className="navHome" to='/' exact={true} activeClassName='active'>
           <img src="https://i.imgur.com/99CvsZ0.png" alt="bunny" className="bunnyPic"></img>
         </NavLink>
+        <NavLink className="navProfile" to="/profile" exact={true} activeClassName="active">Profile</NavLink>
         <div className="navLogout">
           <LogoutButton />
         </div>
@@ -24,6 +26,7 @@ const NavBar = ({ isLoaded }) => {
   } else {
     sessionlinks = (
       <div className="navbar">
+        <h1 className="homeTitle">ChoreBunny</h1>
         <NavLink className="navHome" to='/splash' exact={true} activeClassName='active'>
           <img src="https://i.imgur.com/99CvsZ0.png" alt="bunny" className="bunnyPic"></img>
         </NavLink>

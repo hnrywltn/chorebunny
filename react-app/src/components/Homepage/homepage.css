@@ -39,15 +39,6 @@
   }
 
 
-  .homeTitle {
-    font-size: 65px;
-    grid-column: 9 / 13;
-    grid-row: 2 / 5;
-    color: #d1e3f8fd;
-    text-shadow: -1px 5px 2px #0000008e;
-    text-align: center;
-    font-family: monospace;
-  }
 
 
   .catTitle {
