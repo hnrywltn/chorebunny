@@ -1,6 +1,9 @@
 import {Link} from 'react-router-dom';
 import './splashpage.css'
 import './ChoreBunny.png'
+
+
+
 function Splashpage() {
     return(
         <div className="wrapper">
