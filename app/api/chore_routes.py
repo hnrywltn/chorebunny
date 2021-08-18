@@ -1,8 +1,8 @@
 from flask import Blueprint, request
 from flask_login import login_required
 from app.models import Chore, db
-from .auth_routes import validation_errors_to_error_messages
 from app.forms import ChoreForm
+from .auth_routes import validation_errors_to_error_messages
 
 chore_routes = Blueprint('chores', __name__)
 
@@ -18,14 +18,14 @@ def create_chore():
     form['csrf_token'].data = request.cookies['csrf_token']
     if form.validate_on_submit():
         chore = Chore(
-            # bunnyId = form.data['bunnyId'],
-            # userId =form.data['userId'],
-            # choreId =form.data['choreId'],
+            bunnyId = form.data['bunnyId'],
+            userId =form.data['userId'],
+            choreId =form.data['choreId'],
             # bunnyComplete=form.data['bunnyComplete'],
             # userComplete=form.data['userComplete'],
             address=form.data['address'],
             detail=form.data['detail'],
-            # total=form.data['total']
+            total=form.data['total']
         )
         db.session.add(chore)
         db.session.commit()
