@@ -13,7 +13,7 @@ def users():
 
 
 @user_routes.route('/<int:id>')
-# @login_required
+@login_required
 def user(id):
     user = User.query.get(id)
     return user.to_dict()
@@ -29,7 +29,7 @@ def user_delete(id):
 
 
 @user_routes.route('/<int:id>', methods=['PATCH'])
-# @login_required
+@login_required
 def user_update(id):
     # print("inside the route")
     data = request.json
