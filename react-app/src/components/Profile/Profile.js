@@ -4,6 +4,7 @@ import { useSelector, useDispatch} from 'react-redux';
 import { Link } from 'react-router-dom';
 import {getChoreTypes} from '../../store/choreType.js';
 import {getUsers} from '../../store/user.js';
+import {getPricings} from '../../store/pricing.js';
 import './profilepage.css';
 
 
@@ -13,13 +14,16 @@ function Profile() {
 
 
   const choreTypes = useSelector(state => {
-    return Object.values(state.choreType);
+    return state.choreType;
   });
   const users = useSelector(state => {
     return Object.values(state.users);
   });
   const user = useSelector(state => {
     return state.session.user;
+  });
+  const pricing = useSelector(state => {
+    return Object.values(state.pricings);
   });
 
   console.log(user.isBunny);
@@ -31,8 +35,16 @@ function Profile() {
   useEffect(() => {
     dispatch(getChoreTypes());
     dispatch(getUsers());
+    dispatch(getPricings());
   }, [dispatch]);
 
+
+
+
+
+
+/////////////////////
+  const usersPricing = pricing?.filter(price => price.userId === user.id);
 
 
 
@@ -41,8 +53,25 @@ function Profile() {
   if (user?.isBunny) {
     bunnyDom = (
       <div className="profilepage-pricingTable">
-         <h1>PRICING TABLE</h1>
-{/* bring in pricings!!!!!!! and loop through - maybe before this conditional */}
+        <h2>PRICING TABLE</h2>
+        {usersPricing.map(price => {
+          return (
+            <>
+              <div className="bunnyChoreDataName">
+                {choreTypes[price.choreId]?.chore}
+              </div>
+
+              <div className="bunnyChoreDataRate">
+                {`$${price.rate}.00 per hour`}
+              </div>
+            </>
+            );
+          }
+        )}
+
+      <Link to="/chore-type-signup">
+        SIGN-UP/EDIT CHORES
+      </Link>
       </div>
     )
   }
