@@ -4,13 +4,14 @@ import session from './session';
 import choreTypeReducer from './choreType';
 import usersReducer from './user';
 import pricingsReducer from './pricing';
+import choresReducer from './chore';
 
 const rootReducer = combineReducers({
   session,
   choreType: choreTypeReducer,
   users: usersReducer,
   pricings: pricingsReducer,
-
+  chores: choresReducer,
 });
 
 
