@@ -33,7 +33,7 @@ function Home() {
             {choreTypes?.slice(0,5).map(choreType => {
               return (
                 <li key={choreType.id}>
-                  <Link to="home">{choreType.chore}</Link>
+                  <Link to="choreForm">{choreType.chore}</Link>
                   <p>{choreType.description}</p>
                 </li>
               )
@@ -49,7 +49,7 @@ function Home() {
             {choreTypes?.slice(5, 10).map(choreType => {
               return (
                 <li key={choreType.id}>
-                  <Link to="home">{choreType.chore}</Link>
+                  <Link to="choreForm">{choreType.chore}</Link>
                   <p>{choreType.description}</p>
                 </li>
               )
@@ -65,7 +65,7 @@ function Home() {
             {choreTypes?.slice(10, 15).map(choreType => {
               return (
                 <li key={choreType.id}>
-                  <Link to="home">{choreType.chore}</Link>
+                  <Link to="choreForm">{choreType.chore}</Link>
                   <p>{choreType.description}</p>
                 </li>
               )
@@ -81,7 +81,7 @@ function Home() {
             {choreTypes?.slice(15, 20).map(choreType => {
               return (
                 <li key={choreType.id}>
-                  <Link to="home">{choreType.chore}</Link>
+                  <Link to="choreForm">{choreType.chore}</Link>
                   <p>{choreType.description}</p>
                 </li>
               )
@@ -97,7 +97,7 @@ function Home() {
             {choreTypes?.slice(20, 25).map(choreType => {
               return (
                 <li key={choreType.id}>
-                  <Link to="home">{choreType.chore}</Link>
+                  <Link to="choreForm">{choreType.chore}</Link>
                   <p>{choreType.description}</p>
                 </li>
               )
@@ -113,7 +113,7 @@ function Home() {
             {choreTypes?.slice(25, 30).map(choreType => {
               return (
                 <li key={choreType.id}>
-                  <Link to="home">{choreType.chore}</Link>
+                  <Link to="choreForm">{choreType.chore}</Link>
                   <p>{choreType.description}</p>
                 </li>
               )
@@ -129,7 +129,7 @@ function Home() {
             {choreTypes?.slice(30, 35).map(choreType => {
               return (
                 <li key={choreType.id}>
-                  <Link to="home">{choreType.chore}</Link>
+                  <Link to="choreForm">{choreType.chore}</Link>
                   <p>{choreType.description}</p>
                 </li>
               )
@@ -145,7 +145,7 @@ function Home() {
             {choreTypes?.slice(35, 40).map(choreType => {
               return (
                 <li key={choreType.id}>
-                  <Link to="home">{choreType.chore}</Link>
+                  <Link to="choreForm">{choreType.chore}</Link>
                   <p>{choreType.description}</p>
                 </li>
               )
