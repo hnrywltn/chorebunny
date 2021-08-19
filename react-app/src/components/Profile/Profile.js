@@ -5,6 +5,7 @@ import { Link } from 'react-router-dom';
 import {getChoreTypes} from '../../store/choreType.js';
 import {getUsers} from '../../store/user.js';
 import {getPricings} from '../../store/pricing.js';
+import {getChores} from '../../store/chore.js';
 import './profilepage.css';
 
 
@@ -25,8 +26,10 @@ function Profile() {
   const pricing = useSelector(state => {
     return Object.values(state.pricings);
   });
+  const chores = useSelector(state => {
+    return Object.values(state.chores);
+  });
 
-  console.log(user.isBunny);
 
 
 
@@ -36,6 +39,7 @@ function Profile() {
     dispatch(getChoreTypes());
     dispatch(getUsers());
     dispatch(getPricings());
+    dispatch(getChores());
   }, [dispatch]);
 
 
@@ -52,16 +56,17 @@ function Profile() {
 
   if (user?.isBunny) {
     bunnyDom = (
+
       <div className="profilepage-pricingTable">
-        <h2>PRICING TABLE</h2>
-        {usersPricing.map(price => {
+        <h2 className="pricingTable-title">PRICINGS</h2>
+        {usersPricing.map((price, i) => {
           return (
             <>
-              <div className="bunnyChoreDataName">
+              <div key={`dataN${i}`} className="bunnyChoreDataName">
                 {choreTypes[price.choreId]?.chore}
               </div>
 
-              <div className="bunnyChoreDataRate">
+              <div key={`dataR${i}`} className="bunnyChoreDataRate">
                 {`$${price.rate}.00 per hour`}
               </div>
             </>
@@ -69,7 +74,7 @@ function Profile() {
           }
         )}
 
-      <Link to="/chore-type-signup">
+      <Link className="profilepage-editPricing" href="/chore-type-signup">
         SIGN-UP/EDIT CHORES
       </Link>
       </div>
@@ -84,7 +89,9 @@ function Profile() {
 
   return (
     <div className="profilepage">
-
+      {/* <div className="profilepage-picture-container"> */}
+        <img className="profilepage-picture" src="https://i.imgur.com/j5d5T4u.jpg" alt="profile" />
+      {/* </div> */}
 
       <div className="profilepage-name">
         {user.name}
@@ -104,6 +111,7 @@ function Profile() {
       </div>
 
       <div className="profilepage-chores">
+        <h2 className="choreTable-title">Chores</h2>
         <div className="choresInProgress">
           CHORES IN PROGRESS
         </div>
