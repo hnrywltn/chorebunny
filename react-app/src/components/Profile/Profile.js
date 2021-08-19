@@ -53,7 +53,7 @@ function Profile() {
   if (user?.isBunny) {
     bunnyDom = (
       <div className="profilepage-pricingTable">
-        <h2>PRICING TABLE</h2>
+        <h2 className="pricingTable-title">PRICINGS</h2>
         {usersPricing.map(price => {
           return (
             <>
@@ -69,7 +69,7 @@ function Profile() {
           }
         )}
 
-      <Link to="/chore-type-signup">
+      <Link className="profilepage-editPricing" href="/chore-type-signup">
         SIGN-UP/EDIT CHORES
       </Link>
       </div>
@@ -84,7 +84,9 @@ function Profile() {
 
   return (
     <div className="profilepage">
-
+      {/* <div className="profilepage-picture-container"> */}
+        <img className="profilepage-picture" src="https://i.imgur.com/j5d5T4u.jpg" alt="profile" />
+      {/* </div> */}
 
       <div className="profilepage-name">
         {user.name}
