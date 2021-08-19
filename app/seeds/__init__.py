@@ -18,6 +18,7 @@ def seed():
     seed_chore_types()
     seed_chores()
     seed_pricings()
+    
 
 # Creates the `flask seed undo` command
 @seed_commands.command('undo')
