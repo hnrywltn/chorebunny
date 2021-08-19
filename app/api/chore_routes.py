@@ -12,7 +12,7 @@ def chore():
   return {'chores': [chore.to_dict() for chore in chores]}
 
 @chore_routes.route('/', methods=['POST'])
-@login_required
+# @login_required
 def create_chore():
     form = ChoreForm()
     form['csrf_token'].data = request.cookies['csrf_token']

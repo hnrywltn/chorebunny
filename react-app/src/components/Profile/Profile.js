@@ -5,6 +5,7 @@ import { Link } from 'react-router-dom';
 import {getChoreTypes} from '../../store/choreType.js';
 import {getUsers} from '../../store/user.js';
 import {getPricings} from '../../store/pricing.js';
+import {getChores} from '../../store/chore.js';
 import './profilepage.css';
 
 
@@ -25,8 +26,10 @@ function Profile() {
   const pricing = useSelector(state => {
     return Object.values(state.pricings);
   });
+  const chores = useSelector(state => {
+    return Object.values(state.chores);
+  });
 
-  console.log(user.isBunny);
 
 
 
@@ -36,6 +39,7 @@ function Profile() {
     dispatch(getChoreTypes());
     dispatch(getUsers());
     dispatch(getPricings());
+    dispatch(getChores());
   }, [dispatch]);
 
 
@@ -52,16 +56,17 @@ function Profile() {
 
   if (user?.isBunny) {
     bunnyDom = (
+
       <div className="profilepage-pricingTable">
         <h2 className="pricingTable-title">PRICINGS</h2>
-        {usersPricing.map(price => {
+        {usersPricing.map((price, i) => {
           return (
             <>
-              <div className="bunnyChoreDataName">
+              <div key={`dataN${i}`} className="bunnyChoreDataName">
                 {choreTypes[price.choreId]?.chore}
               </div>
 
-              <div className="bunnyChoreDataRate">
+              <div key={`dataR${i}`} className="bunnyChoreDataRate">
                 {`$${price.rate}.00 per hour`}
               </div>
             </>
@@ -106,6 +111,7 @@ function Profile() {
       </div>
 
       <div className="profilepage-chores">
+        <h2 className="choreTable-title">Chores</h2>
         <div className="choresInProgress">
           CHORES IN PROGRESS
         </div>
