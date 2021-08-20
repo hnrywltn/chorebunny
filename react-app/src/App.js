@@ -83,9 +83,9 @@ function App() {
         <Route path='/splash' exact={true} >
           <Splashpage />
         </Route>
-        <Route path='/' exact={true} >
+        <ProtectedRoute path='/' exact={true} >
           <Home />
-        </Route>
+        </ProtectedRoute>
         <Route path='/choreForm'>
           <ChoreForm />
         </Route>
