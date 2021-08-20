@@ -28,6 +28,7 @@ function Profile() {
     return state.session.user;
   });
   const pricings = useSelector(state => Object.values(state.pricings))
+  console.log("THIS IS PRICINGS", pricings)
   const onePrice = pricings.find(price => price.id)
   const [click, setClick] = useState(0)
 
@@ -36,7 +37,7 @@ function Profile() {
   // console.log("this is selected", selected)
 
   const pricing = useSelector(state => {
-    return Object.values(state.pricings);
+    return state.pricings;
   });
   const chores = useSelector(state => {
     return Object.values(state.chores);
@@ -45,9 +46,11 @@ function Profile() {
   //* deleting pricing-chore
 
   
-  const deleteClick = () => {
-    console.log(onePrice)
-    dispatch(deletePricingThunk(onePrice.id))
+  const deleteClick = (id, e) => {
+    e.preventDefault();
+    // console.log("THIS IS ONE ", id)
+    dispatch(deletePricingThunk(id))
+    console.log("state", pricing[id])
   }
 
 
@@ -64,7 +67,7 @@ function Profile() {
     dispatch(getChores());
   }, [dispatch])
 /////////////////////
-  const usersPricing = pricing?.filter(price => price.userId === user.id);
+  const usersPricing = pricings?.filter(price => price.userId === user.id);
   const handelclick = () => {
     setClick(1)
     const userInfo = {
@@ -170,8 +173,8 @@ function Profile() {
         {usersPricing.map((price, i) => {
           return (
             <>
-              <button onClick={deleteClick}>DELETE</button>
               <div className="bunnyChoreDataName">
+              <button onClick={e => deleteClick(price.id, e)}>DELETE</button>
                 {choreTypes[price.choreId]?.chore}
               </div>
 

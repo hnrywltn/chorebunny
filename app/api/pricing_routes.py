@@ -50,7 +50,7 @@ def pricing_delete(id):
   price = Pricing.query.get(id)
   db.session.delete(price)
   db.session.commit()
-  return {"message": "DELETED"}
+  return {"message": id}
 
 @pricing_routes.route('/<int:id>', methods=['PATCH'])
 @login_required
