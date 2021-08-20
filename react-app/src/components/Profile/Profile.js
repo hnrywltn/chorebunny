@@ -19,7 +19,7 @@ function Profile() {
   const [choreType, setChoreType] = useState(null);
 
   const choreTypes = useSelector(state => state.choreType);
-  // const users = useSelector(state => Object.values(state.users));
+  const users = useSelector(state => Object.values(state.users));
   const user = useSelector(state => state.session.user);
   const pricings = useSelector(state => Object.values(state.pricings))
   const onePrice = pricings.find(price => price.id)
@@ -124,8 +124,10 @@ function Profile() {
   if (completedChores.length) {
     completeDom = completedChores.map(chore => {
       return (
-        <div className="chore-complete">
-          test
+        <div className="choresComplete">
+          <div>{user.name}</div>
+          <div>Bunny {users[chore?.bunnyId].name}</div>
+          <div>total: {chore.total}</div>
         </div>
       )
     })
@@ -135,8 +137,12 @@ function Profile() {
   if (incompleteChores.length) {
     incompleteDom = incompleteChores.map(chore => {
       return (
-        <div className="chore-incomplete">
-          test incomplete
+        <div className="choresInProgress">
+          <div>{user.name}</div>
+          <div>{choreTypes[chore?.choreId]?.category}: {choreTypes[chore.choreId].chore}</div>
+          <div>{chore.detail}</div>
+          <div>Bunny {users[chore?.bunnyId].name}</div>
+          <div>total: {chore.total}</div>
         </div>
       )
     })
@@ -203,14 +209,14 @@ function Profile() {
       </div>
 
       <div className="profilepage-chores">
-        <h2 className="choreTable-title">Chores</h2>
+        {/* <h2 className="choreTable-title">Chores</h2> */}
         <div className="choresInProgress">
-          CHORES IN PROGRESS
+          <h3>CHORES IN PROGRESS</h3>
           {incompleteDom}
         </div>
 
         <div className="choresComplete">
-          CHORES COMPLETE
+          <h3>CHORES COMPLETE</h3>
           {completeDom}
         </div>
       </div>

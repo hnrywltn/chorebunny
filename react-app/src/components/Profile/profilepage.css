@@ -21,6 +21,8 @@
   grid-row: 4 / 18;
   grid-column:14 / 20;
   overflow: scroll;
+  background-color: rgba(245, 245, 245, 0.733);
+  border-radius: 10px;
 }
 
 .pricingForm {
@@ -76,7 +78,7 @@ button {
   grid-row: 1 / 2;
   justify-content: center;
   align-items: center;
-
+  /* background-color: rgba(129, 148, 233, 0.733); */
 }
 
 .bunnyChoreDataName{
@@ -127,14 +129,17 @@ button {
 }
 
 .profilepage-chores {
+  display: grid;
   grid-column: 7 / 13;
   grid-row: 4 / 18;
+  background-color: rgba(245, 245, 220, 0.842);
+  border-radius: 10px;
 }
 
 .choresInProgress {
-
+  border: 1px solid #000;
 }
 
 .choresComplete {
-
+  border: 1px solid #000;
 }
