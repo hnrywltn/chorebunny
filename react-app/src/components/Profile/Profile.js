@@ -28,11 +28,11 @@ function Profile() {
   });
 
   const [click, setClick] = useState(0)
-  
+
   let isBunny = user.isBunny;
-  // const [selected, setSelected] = useState(user.isBunny); 
+  // const [selected, setSelected] = useState(user.isBunny);
   // console.log("this is selected", selected)
-  
+
   const pricing = useSelector(state => {
     return Object.values(state.pricings);
   });
@@ -69,12 +69,12 @@ function Profile() {
     }
     dispatch(updateBioThunk(user.id, userInfo ))
   }
-  
+
 
   const usersChores = chores?.filter(chore => chore.userId === user.id || chore.bunnyId === user.id);
   const completedChores = usersChores?.filter(chore => chore.userComplete && chore.bunnyComplete);
   const incompleteChores = usersChores?.filter(chore => !chore.userComplete || !chore.bunnyComplete);
-  const usersAvaiableChoreTypes = null; //FIXXXXXXXXX
+  const usersAvaiableChoreTypes = null; //FIXXXXXXXXX and populate drop down menu with this
 
 
 
@@ -200,7 +200,7 @@ function Profile() {
         {user.email}
       </div>
       {/* this is when the user IS A BUNNY- isBunny === true */}
-      {user.isBunny === false && 
+      {user.isBunny === false &&
       <div className="profilepage-isBunny">
         {/* <form onSubmit={edit}>
           <label>Become a Bunny?</label>
@@ -211,7 +211,7 @@ function Profile() {
               <button onClick={handelclick}>Become a bunny</button>
       </div>
       }
-      
+
       <div className="profilepage-bio">
         {user.bio}
       </div>

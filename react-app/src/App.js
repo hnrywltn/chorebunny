@@ -39,21 +39,23 @@ function App() {
       //     "username": "demo"
       //   })
       // })
-      let results = await fetch('/api/chores', {
-        method: 'post',
-        headers: {
-          'Content-Type': 'application/json'
-        },
-        body: JSON.stringify({
-          "bunnyId": 1,
-          "userId": 2,
-          "choreId": 10,
-          "address": '1234 testing street',
-          "detail": 'testing testing testing ',
-          "total": 45,
 
-        })
-      })
+  //TESTING TRASH!!!!!
+      // let results = await fetch('/api/chores', {
+      //   method: 'post',
+      //   headers: {
+      //     'Content-Type': 'application/json'
+      //   },
+      //   body: JSON.stringify({
+      //     "bunnyId": 1,
+      //     "userId": 2,
+      //     "choreId": 10,
+      //     "address": '1234 testing street',
+      //     "detail": 'testing testing testing ',
+      //     "total": 45,
+
+      //   })
+      // })
     })();
   }, [dispatch]);
 
