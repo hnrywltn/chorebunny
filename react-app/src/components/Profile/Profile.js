@@ -144,7 +144,7 @@ function Profile() {
       return (
         <div className="choresComplete">
           <div>{user.name}</div>
-          <div>Bunny {users[chore.bunnyId].name}</div>
+          <div>Bunny {users[chore?.bunnyId].name}</div>
           <div>total: {chore.total}</div>
         </div>
       )
@@ -157,9 +157,9 @@ function Profile() {
       return (
         <div className="choresInProgress">
           <div>{user.name}</div>
-          <div>{choreTypes[chore.choreId].category}: {choreTypes[chore.choreId].chore}</div>
+          <div>{choreTypes[chore?.choreId]?.category}: {choreTypes[chore.choreId].chore}</div>
           <div>{chore.detail}</div>
-          <div>Bunny {users[chore.bunnyId].name}</div>
+          <div>Bunny {users[chore?.bunnyId].name}</div>
           <div>total: {chore.total}</div>
         </div>
       )
