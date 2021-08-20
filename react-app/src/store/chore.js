@@ -20,8 +20,11 @@ const edit = (chore) => ({
 
 export const getChores = () => async (dispatch) => {
   const res = await fetch(`/api/chores`);
-  const chores = await res.json();
-  dispatch(load(chores));
+  if(res.ok){
+  const allChores = await res.json();
+  dispatch(load(allChores));
+  return allChores
+  }
 };
 
 export const addChore = (payload) => async (dispatch) => {
@@ -37,10 +40,11 @@ export const addChore = (payload) => async (dispatch) => {
   }
 }
 
-const choresReducer = (state = [], action) => {
+const initialState = {}
+const choresReducer = (state = initialState, action) => {
   switch (action.type) {
     case LOAD:
-      const newChores = { ...state };
+      const newChores = {};
       action.chores.chores.forEach(chore => {
         newChores[chore.id] = chore;
       });
@@ -48,7 +52,7 @@ const choresReducer = (state = [], action) => {
     case ADD: {
       return {
         ...state,
-        ...action.chore
+        [action.chore.id]: action.chore
       }
     }
     default:
