@@ -1,10 +1,11 @@
 // import React from 'react';
-import {useEffect} from 'react';
+import {useEffect, useState} from 'react';
 import { useSelector, useDispatch} from 'react-redux';
 import { Link } from 'react-router-dom';
 import {getChoreTypes} from '../../store/choreType.js';
 import {getUsers} from '../../store/user.js';
 import {getPricings} from '../../store/pricing.js';
+import { updateBioThunk } from '../../store/session.js';
 import './profilepage.css';
 
 
@@ -12,7 +13,7 @@ function Profile() {
 
   const dispatch = useDispatch();
 
-
+  
   const choreTypes = useSelector(state => {
     return state.choreType;
   });
@@ -22,32 +23,49 @@ function Profile() {
   const user = useSelector(state => {
     return state.session.user;
   });
+
+  const [click, setClick] = useState(0)
+  
+  let isBunny = user.isBunny;
+  // const [selected, setSelected] = useState(user.isBunny); 
+  // console.log("this is selected", selected)
+  
   const pricing = useSelector(state => {
     return Object.values(state.pricings);
   });
 
-  console.log(user.isBunny);
+  console.log('===============>>>>>',user.isBunny);
 
 
 
-
+  // const edit = (e) => {
+  //   e.preventDefault()
+  //   const userInfo = {
+  //     isBunny: true,
+  //   }
+  //   // console.log(selected)
+  //   dispatch(updateBioThunk(user.id))
+  // }
 
   useEffect(() => {
     dispatch(getChoreTypes());
     dispatch(getUsers());
     dispatch(getPricings());
-  }, [dispatch]);
-
-
-
-
-
+    setClick(0);
+  }, [dispatch, click]);
 
 /////////////////////
   const usersPricing = pricing?.filter(price => price.userId === user.id);
 
-
-
+  
+  const handelclick = () => {
+    setClick(1)
+    const userInfo = {
+      isBunny: true,
+    }
+    dispatch(updateBioThunk(user.id, userInfo ))
+  }
+  
   let bunnyDom = null;
 
   if (user?.isBunny) {
@@ -76,12 +94,6 @@ function Profile() {
     )
   }
 
-
-
-
-
-
-
   return (
     <div className="profilepage">
       {/* <div className="profilepage-picture-container"> */}
@@ -99,8 +111,19 @@ function Profile() {
       <div className="profilepage-email">
         {user.email}
       </div>
-
-
+      {/* this is when the user IS A BUNNY- isBunny === true */}
+      {user.isBunny === false && 
+      <div className="profilepage-isBunny">
+        {/* <form onSubmit={edit}>
+          <label>Become a Bunny?</label>
+            <input type="checkbox" onClick={() => {
+              isBunny = true}} />
+              <button type="submit">submit</button>
+        </form> */}
+              <button onClick={handelclick}>Become a bunny</button>
+      </div>
+      }
+      
       <div className="profilepage-bio">
         {user.bio}
       </div>

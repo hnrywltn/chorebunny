@@ -2,7 +2,7 @@
 const SET_USER = 'session/SET_USER';
 const REMOVE_USER = 'session/REMOVE_USER';
 const EDIT_USER = 'session/EDIT_USER';
-
+const EDIT_BIO = 'bio/EDIT_BIO'
 
 const setUser = (user) => ({
   type: SET_USER,
@@ -17,6 +17,13 @@ const edit = (user) => ({
   type: EDIT_USER,
   payload: user
 });
+
+const updateUser = (users) => ({
+  type: EDIT_BIO,
+  users
+})
+
+
 
 
 
@@ -129,6 +136,19 @@ export const editUser = payload => async dispatch => {
   }
 }
 
+//* edit bio thunk
+export const updateBioThunk = (id, user) => async(dispatch) => {
+  console.log("this is id", id, user)
+  const res = await fetch(`/api/users/${id}`, {
+    method: 'PUT',
+    headers: {'Content-Type': 'application/json'},
+    body: JSON.stringify(user)
+  })
+  const data = await res.json()
+  console.log("THIS IS DATA", data)
+  dispatch(updateUser(data))
+  return data
+}
 
 
 
@@ -148,5 +168,9 @@ export default function reducer(state = initialState, action) {
       return { user: null }
     default:
       return state;
+    case EDIT_BIO: //Reducer for user edit
+      return {
+        user : action.users
+      }
   }
 }
