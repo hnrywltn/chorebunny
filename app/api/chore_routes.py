@@ -13,7 +13,7 @@ def chore():
     return {'chores': [chore.to_dict() for chore in chores]}
 
 
-@chore_routes.route('', methods=['POST'])
+@chore_routes.route('/', methods=['POST'])
 # @login_required
 def create_chore():
     form = ChoreForm()

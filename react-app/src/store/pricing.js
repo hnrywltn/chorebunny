@@ -1,7 +1,7 @@
 const LOAD = 'pricing/';
 const ADD = 'pricing/ADD';
 const EDIT = 'pricing/edit/';
-const DELETE = 'pricing/delete/';
+const DELETE_PRICING = 'pricing/DELETE_PRICING';
 
 
 
@@ -20,7 +20,10 @@ const edit = (pricing) => ({
   pricing
 });
 
-
+const deletePricing = (price) => ({
+  type: DELETE_PRICING,
+  price
+})
 
 
 
@@ -52,30 +55,42 @@ export const addPricing = payload => async dispatch => {
 }
 
 
+//* delete thunk for pricing
 
-const pricingsReducer = (state = [], action) => {
+export const deletePricingThunk = (id) => async(dispatch) => {
+  const res = await fetch(`/api/pricings/${id}`, {
+    method: 'DELETE',
+    headers: {
+      'Content-Type': 'application/json',
+    },
+  })
+  if(res.ok){
+  const deletedPrice = await res.json()
+  dispatch(deletePricing(deletedPrice))
+  }
+}
+
+
+
+const initialState = {}
+const pricingsReducer = (state = initialState, action) => {
   switch (action.type) {
     case LOAD:
-      const newPricings = {...state};
+      const newPricings = {};
       action.pricings.pricing.forEach(pricing => {
         newPricings[pricing.id] = pricing;
       });
       return newPricings;
-
     case ADD:
       const newState = {
         ...state,
         [action.pricing.id]: action.pricing,
       };
       return newState;
-
-
-
-
-
-
-
-
+    case DELETE_PRICING:
+      const priceToDelete = {...state}
+      delete priceToDelete[action.price.id]
+      return priceToDelete
     default:
       return state;
   }

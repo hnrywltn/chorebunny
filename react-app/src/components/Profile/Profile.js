@@ -1,11 +1,12 @@
 // import React from 'react';
 import {useEffect, useState} from 'react';
 import { useSelector, useDispatch} from 'react-redux';
+import { useParams } from 'react-router';
 import { Link } from 'react-router-dom';
 import {getChoreTypes} from '../../store/choreType.js';
 import {getUsers} from '../../store/user.js';
 import { updateBioThunk } from '../../store/session.js';
-import {getPricings, addPricing} from '../../store/pricing.js';
+import {getPricings, addPricing, deletePricingThunk} from '../../store/pricing.js';
 import {getChores} from '../../store/chore.js';
 import './profilepage.css';
 
@@ -13,7 +14,7 @@ import './profilepage.css';
 function Profile() {
 
   const dispatch = useDispatch();
-
+  const {id} = useParams();
   const [rate, setRate] = useState('rate per hour');
   const [choreType, setChoreType] = useState(null);
 
@@ -26,7 +27,8 @@ function Profile() {
   const user = useSelector(state => {
     return state.session.user;
   });
-
+  const pricings = useSelector(state => Object.values(state.pricings))
+  const onePrice = pricings.find(price => price.id)
   const [click, setClick] = useState(0)
   
   let isBunny = user.isBunny;
@@ -40,26 +42,27 @@ function Profile() {
     return Object.values(state.chores);
   });
 
+  //* deleting pricing-chore
+
+  
+  const deleteClick = () => {
+    console.log(onePrice)
+    dispatch(deletePricingThunk(onePrice.id))
+  }
 
 
-  // const edit = (e) => {
-  //   e.preventDefault()
-  //   const userInfo = {
-  //     isBunny: true,
-  //   }
-  //   // console.log(selected)
-  //   dispatch(updateBioThunk(user.id))
-  // }
 
   useEffect(() => {
     dispatch(getChoreTypes());
     dispatch(getUsers());
     dispatch(getPricings());
-    dispatch(getChores());
     setClick(0);
   }, [dispatch, click]);
 
 
+  useEffect(() => {
+    dispatch(getChores());
+  }, [dispatch])
 /////////////////////
   const usersPricing = pricing?.filter(price => price.userId === user.id);
   const handelclick = () => {
@@ -167,6 +170,7 @@ function Profile() {
         {usersPricing.map((price, i) => {
           return (
             <>
+              <button onClick={deleteClick}>DELETE</button>
               <div className="bunnyChoreDataName">
                 {choreTypes[price.choreId]?.chore}
               </div>
