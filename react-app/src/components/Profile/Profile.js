@@ -4,6 +4,7 @@ import { useSelector, useDispatch} from 'react-redux';
 import { Link } from 'react-router-dom';
 import {getChoreTypes} from '../../store/choreType.js';
 import {getUsers} from '../../store/user.js';
+import { updateBioThunk } from '../../store/session.js';
 import {getPricings, addPricing} from '../../store/pricing.js';
 import {getChores} from '../../store/chore.js';
 import './profilepage.css';
@@ -16,7 +17,6 @@ function Profile() {
   const [rate, setRate] = useState('rate per hour');
   const [choreType, setChoreType] = useState(null);
 
-
   const choreTypes = useSelector(state => {
     return state.choreType;
   });
@@ -26,6 +26,13 @@ function Profile() {
   const user = useSelector(state => {
     return state.session.user;
   });
+
+  const [click, setClick] = useState(0)
+  
+  let isBunny = user.isBunny;
+  // const [selected, setSelected] = useState(user.isBunny); 
+  // console.log("this is selected", selected)
+  
   const pricing = useSelector(state => {
     return Object.values(state.pricings);
   });
@@ -35,25 +42,34 @@ function Profile() {
 
 
 
-
-
+  // const edit = (e) => {
+  //   e.preventDefault()
+  //   const userInfo = {
+  //     isBunny: true,
+  //   }
+  //   // console.log(selected)
+  //   dispatch(updateBioThunk(user.id))
+  // }
 
   useEffect(() => {
     dispatch(getChoreTypes());
     dispatch(getUsers());
     dispatch(getPricings());
     dispatch(getChores());
-  }, [dispatch]);
-
-
-
-
+    setClick(0);
+  }, [dispatch, click]);
 
 
 /////////////////////
   const usersPricing = pricing?.filter(price => price.userId === user.id);
-
-
+  const handelclick = () => {
+    setClick(1)
+    const userInfo = {
+      isBunny: true,
+    }
+    dispatch(updateBioThunk(user.id, userInfo ))
+  }
+  
 
   const usersChores = chores?.filter(chore => chore.userId === user.id || chore.bunnyId === user.id);
   const completedChores = usersChores?.filter(chore => chore.userComplete && chore.bunnyComplete);
@@ -166,12 +182,6 @@ function Profile() {
     )
   }
 
-
-
-
-
-
-
   return (
     <div className="profilepage">
       {/* <div className="profilepage-picture-container"> */}
@@ -189,8 +199,19 @@ function Profile() {
       <div className="profilepage-email">
         {user.email}
       </div>
-
-
+      {/* this is when the user IS A BUNNY- isBunny === true */}
+      {user.isBunny === false && 
+      <div className="profilepage-isBunny">
+        {/* <form onSubmit={edit}>
+          <label>Become a Bunny?</label>
+            <input type="checkbox" onClick={() => {
+              isBunny = true}} />
+              <button type="submit">submit</button>
+        </form> */}
+              <button onClick={handelclick}>Become a bunny</button>
+      </div>
+      }
+      
       <div className="profilepage-bio">
         {user.bio}
       </div>

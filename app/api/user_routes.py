@@ -1,7 +1,7 @@
 from flask import Blueprint, jsonify, request
 from flask_login import login_required
 from app.models import User, db
-
+from app.forms import EditBunny
 user_routes = Blueprint('users', __name__)
 
 
@@ -43,7 +43,7 @@ def user_update(id):
     user.username = data["username"] if data["username"] else user.username
     user.name = data['name'] if data['name'] else user.name
     user.email = data['email'] if data['email'] else user.email
-    # user['password'] = data['password'] if data['password'] else user['password']
+    user['password'] = data['password'] if data['password'] else user['password']
     user.isBunny = data['isBunny'] if data['isBunny'] else user.isBunny
     user.bio = data['bio'] if data['bio'] else user.bio
     user.address = data['address'] if data['address'] else user.address
@@ -54,3 +54,18 @@ def user_update(id):
     db.session.add(user)
     db.session.commit()
     return user.to_dict()
+
+    #* route for edit bunny
+@user_routes.route('/<int:id>', methods=['PUT'])
+def isBunny_update(id):
+    print("MADE IT")
+    form = EditBunny()
+    form['csrf_token'].data = request.cookies['csrf_token']
+    form["isBunny"].data = request.json['isBunny']
+    print(form.data)
+    if form.validate_on_submit(): 
+        userToEdit = User.query.get(id)
+        userToEdit.isBunny = form['isBunny'].data
+        db.session.commit()
+        return userToEdit.to_dict()
+    print(form.errors)

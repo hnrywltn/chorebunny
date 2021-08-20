@@ -49,3 +49,19 @@
     text-shadow: -1px 5px 2px #fffdfd8e;
     font-family: monospace;
   }
+
+  .chore-button {
+    grid-row: 3/5;
+    grid-column: 9 / 13;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  .chore-btn {
+    width: 500px;
+    height: 75px;
+    border-radius: 12px;
+    background-color: #d7dde4ca;
+    border: 1px solid #1f5392fd;
+    box-shadow: inset 0 0 10px #0000008e;
+  }
