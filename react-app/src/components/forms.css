@@ -1,0 +1,64 @@
+.form .formstyle .form-container {
+  margin: auto;
+  margin-top: 50px;
+  width: 500px;
+  height: auto;
+  border-radius: 20px;
+  padding: 40px;
+  box-sizing: border-box;
+  background: #eef2f5;
+  box-shadow: 14px 14px 20px #e6eaec, -14px -14px 20px white;
+  overflow: auto;
+}
+
+.form .formstyle button {
+  margin-top: 10px;
+  border: #386abb 3px solid;
+  height: 50px;
+  border-radius: 20px;
+}
+
+.form .formstyle label,
+.form .formstyle input,
+.form .formstyle button,
+.form .formstyle textarea {
+    border: none;
+    outline: none;
+    box-sizing: border-box;
+}
+
+.form .formstyle label {
+    margin-top: 10px;
+    margin-bottom: 0px;
+    letter-spacing: 1px;
+}
+
+.form .formstyle input {
+  background: #eef2f5;
+  padding: 10px;
+  padding-left: 20px;
+  height: 25px;
+  border-radius: 50px;
+  box-shadow: inset 6px 6px 6px #e6eaec, inset -6px -6px 6px white;
+  margin-top: 5px;
+}
+
+.form .formstyle textarea {
+  padding: 10px;
+  padding-left: 20px;
+  height: 50px;
+  border-radius: 50px;
+}
+
+.form .formstyle input[type='checkbox'] {
+  height: auto;
+  box-shadow: unset;
+}
+
+.form .formstyle div {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  align-content: space-between;
+  width: 500px;
+}
