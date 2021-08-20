@@ -3,6 +3,7 @@ import { useSelector, useDispatch } from 'react-redux';
 import { Redirect } from 'react-router-dom';
 import { login } from '../../store/session';
 import './login.css'
+import '../forms.css'
 
 const LoginForm = () => {
   const [errors, setErrors] = useState([]);
@@ -32,8 +33,8 @@ const LoginForm = () => {
   }
 
   return (
-    <div className="login-form">
-      <form onSubmit={onLogin}>
+    <div className="form formstyle form-container login-form">
+      <form className='form formstyle' onSubmit={onLogin}>
         <div>
           {errors.map((error, ind) => (
             <div key={ind}>{error}</div>
@@ -60,8 +61,8 @@ const LoginForm = () => {
           />
           <button type='submit'>Login</button>
         </div>
-      </form>
-    </div>
+      </form >
+    </div >
   );
 };
 

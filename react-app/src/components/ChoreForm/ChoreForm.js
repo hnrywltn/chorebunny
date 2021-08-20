@@ -1,12 +1,12 @@
 import React, { useState, useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux'
-import { Redirect, useParams, useHistory } from 'react-router-dom';
+import { useParams, useHistory } from 'react-router-dom';
 import { getChoreTypes } from '../../store/choreType.js';
 import { getUsers } from '../../store/user.js';
 import { getPricings } from '../../store/pricing.js';
 import { getChores } from '../../store/chore.js';
 import { addChore } from '../../store/chore.js';
-
+import '../forms.css'
 
 const ChoreForm = () => {
     const { id } = useParams();
@@ -17,24 +17,21 @@ const ChoreForm = () => {
     const dispatch = useDispatch();
     const [errors, setErrors] = useState([]);
     const [bunnyId, setBunnyId] = useState('');
-    const [userId, setUserId] = useState(user?.id);
     const [choreId, setChoreId] = useState(1);
-    const [bunnyComplete, setBunnyComplete] = useState(false);
-    const [userComplete, setUserComplete] = useState(false);
     const [address, setAddress] = useState('');
     const [detail, setDetail] = useState('');
-    const [total, setTotal] = useState(0);
     const [showBunnySelectionForm, setBunnySelectionForm] = useState(false);
+
     if (id) {
         setChoreId(id);
     }
-    const choreTypes = useSelector(state => {
-        return state.choreType;
-    });
-    const chores = useSelector(state => {
-        return Object.values(state.chores);
-    });
 
+    // const choreTypes = useSelector(state => {
+    //     return state.choreType;
+    // });
+    // const chores = useSelector(state => {
+    //     return Object.values(state.chores);
+    // });
 
     useEffect(() => {
         dispatch(getChoreTypes());
@@ -43,22 +40,29 @@ const ChoreForm = () => {
         dispatch(getChores());
     }, [dispatch]);
 
-
     const choreSubmit = async (e) => {
         e.preventDefault();
         setBunnySelectionForm(true);
         return;
     };
+
     const bunnySubmit = async (e) => {
         e.preventDefault();
         dispatch(addChore({
-            bunnyId, userId, choreId, address, detail, total
+            bunnyId,
+            userId: user?.id,
+            choreId,
+            address,
+            detail,
+            total: 0
         }))
         history.push('/');
     };
+
     const updateAddress = (e) => {
         setAddress(e.target.value);
     };
+
     const updateDetail = (e) => {
         setDetail(e.target.value);
     };
@@ -68,8 +72,8 @@ const ChoreForm = () => {
     let pricing = pricings.filter(pricing => pricing.choreId == choreId);
 
     choreForm = (
-        <>
-            <form onSubmit={choreSubmit}>
+        <div className='form formstyle form-container'>
+            <form className='form formstyle' onSubmit={choreSubmit}>
                 <div>
                     {errors.map((error, ind) => (
                         <div key={ind}>{error}</div>
@@ -93,10 +97,10 @@ const ChoreForm = () => {
                 </div>
                 <button type='submit'>Chore Submit</button>
             </form>
-        </>
+        </div>
     )
     bunnyForm = (
-        <>
+        <div className='form formstyle form-container'>
             <form onSubmit={bunnySubmit}>
                 {pricing.map(price => {
                     return (
@@ -109,13 +113,13 @@ const ChoreForm = () => {
                                 />
                                 {users[price.userId]?.name}
                                 {price.rate}
-                            </label>
-                        </div>
+                            </label >
+                        </div >
                     )
                 })}
                 <button type='submit'>Bunny Select</button>
-            </form>
-        </>
+            </form >
+        </div >
     )
     // let formDom = showBunnySelectionForm ? bunnyForm : choreForm;
     return (

@@ -1,16 +1,16 @@
 import './navbar.css'
 import React from 'react';
-import  ReactDOM  from 'react-dom';
-import { NavLink, Link } from 'react-router-dom';
+// import  ReactDOM  from 'react-dom';
+import { NavLink } from 'react-router-dom';
 import { useSelector } from 'react-redux';
 import LogoutButton from '../auth/LogoutButton';
 import DemoUser from '../Demo/Index';
 
 const NavBar = ({ isLoaded }) => {
-  const user = useSelector((state)=> state.session.user);
+  const user = useSelector((state) => state.session.user);
 
   let sessionlinks;
-  if(user){
+  if (user) {
     sessionlinks = (
       <div className="navbar">
         <h1 className="homeTitle">ChoreBunny</h1>
