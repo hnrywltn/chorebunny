@@ -6,26 +6,43 @@ from .auth_routes import validation_errors_to_error_messages
 
 pricing_routes = Blueprint('pricings', __name__)
 
-@pricing_routes.route('/')
+@pricing_routes.route('/', methods=['GET', 'POST'])
 # @login_required
 def pricing():
-  pricing = Pricing.query.all()
-  return {'pricing': [price.to_dict() for price in pricing] }
-
-@pricing_routes.route('/', methods=['POST'])
-@login_required
-def pricing_create():
-  form = PricingForm()
-  form['csrf_token'].data = request.cookies['csrf_token']
-  if form.validate_on_submit():
-    price = Pricing(
-      userId = form.data['userId'],
-      choreId = form.data['choreId'],
-      rate = form.data['rate']
-    )
-  db.session.add(price)
-  db.session.commit()
+  if request.method == 'GET':
+    pricing = Pricing.query.all()
+    return {'pricing': [price.to_dict() for price in pricing] }
+  elif request.method == 'POST':
+    form = PricingForm()
+    form['csrf_token'].data = request.cookies['csrf_token']
+    print(form.data)
+    if form.validate_on_submit():
+      price = Pricing(
+        userId = form.data['userId'],
+        choreId = form.data['choreId'],
+        rate = form.data['rate']
+      )
+      db.session.add(price)
+      db.session.commit()
+      return price.to_dict()
+      # print(form.errors)
   return {'errors': validation_errors_to_error_messages(form.errors)}, 401
+
+# @pricing_routes.route('/', methods
+# =['POST'])
+# # @login_required
+# def pricing_create():
+#   form = PricingForm()
+#   form['csrf_token'].data = request.cookies['csrf_token']
+#   if form.validate_on_submit():
+#     price = Pricing(
+#       userId = form.data['userId'],
+#       choreId = form.data['choreId'],
+#       rate = form.data['rate']
+#     )
+#   db.session.add(price)
+#   db.session.commit()
+#   return {'errors': validation_errors_to_error_messages(form.errors)}, 401
 
 @pricing_routes.route('/<int:id>', methods=['DELETE'])
 @login_required

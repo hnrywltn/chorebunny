@@ -27,10 +27,30 @@ const edit = (pricing) => ({
 
 
 export const getPricings = () => async (dispatch) => {
-  const res = await fetch(`/api/pricing`);
+  const res = await fetch(`/api/pricings/`);
   const pricings = await res.json();
   dispatch(load(pricings));
 };
+
+export const addPricing = payload => async dispatch => {
+  console.log('PAYLOAD', payload);
+  const res = await fetch(`/api/pricings/`, {
+    method: 'POST',
+    headers: {
+      'Content-Type': 'application/json',
+    },
+    body: JSON.stringify(payload),
+  });
+  if(res.ok) {
+    const pricing = await res.json();
+    dispatch(add(pricing));
+    return pricing;
+  } else {
+    let err = await res.json();
+    console.log('ERROR', err);
+  }
+}
+
 
 
 const pricingsReducer = (state = [], action) => {
@@ -41,6 +61,21 @@ const pricingsReducer = (state = [], action) => {
         newPricings[pricing.id] = pricing;
       });
       return newPricings;
+
+    case ADD:
+      const newState = {
+        ...state,
+        [action.pricing.id]: action.pricing,
+      };
+      return newState;
+
+
+
+
+
+
+
+
     default:
       return state;
   }

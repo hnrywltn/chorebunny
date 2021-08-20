@@ -1,0 +1,7 @@
+.login-form {
+    grid-row: 6 / end;
+    grid-column: 7 / 16;
+    display: grid;
+    grid-template-columns:repeat(20 ,5%);
+    grid-template-rows: repeat(20, 5%);
+}
