@@ -137,9 +137,9 @@ button {
 }
 
 .choresInProgress {
-
+  border: 1px solid #000;
 }
 
 .choresComplete {
-
+  border: 1px solid #000;
 }
