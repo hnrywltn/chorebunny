@@ -17,7 +17,6 @@ def user(id):
     user = User.query.get(id)
     return user.to_dict()
 
-
 @user_routes.route('/<int:id>', methods=['DELETE'])
 @login_required
 def user_delete(id):
@@ -33,13 +32,13 @@ def user_update(id):
     # print("inside the route")
     data = request.json
     user = User.query.get(id)
-    print("this is the user", user.username)
-    print(dir(user))
+    # print("this is the user", user.username)
+    # print(dir(user))
     # print(request['json'])
     # print(request.json)
     # print(request.data)
     # print(request)
-    print("this is the data", data)
+    # print("this is the data", data)
     user.username = data["username"] if data["username"] else user.username
     user.name = data['name'] if data['name'] else user.name
     user.email = data['email'] if data['email'] else user.email

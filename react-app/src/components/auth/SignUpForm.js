@@ -79,7 +79,9 @@ const SignUpForm = () => {
       </div>
       <div>
         <label>Name</label>
-        <input type='text' value={name} onChange={updateName} />
+        <input type='text'
+        value={name}
+        onChange={updateName} />
       </div>
       <div>
         <label>User Name</label>

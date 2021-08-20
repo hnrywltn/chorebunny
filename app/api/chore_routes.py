@@ -6,21 +6,23 @@ from .auth_routes import validation_errors_to_error_messages
 
 chore_routes = Blueprint('chores', __name__)
 
+
 @chore_routes.route('/')
 def chore():
-  chores = Chore.query.all()
-  return {'chores': [chore.to_dict() for chore in chores]}
+    chores = Chore.query.all()
+    return {'chores': [chore.to_dict() for chore in chores]}
 
-@chore_routes.route('/', methods=['POST'])
+
+@chore_routes.route('', methods=['POST'])
 # @login_required
 def create_chore():
     form = ChoreForm()
     form['csrf_token'].data = request.cookies['csrf_token']
     if form.validate_on_submit():
         chore = Chore(
-            bunnyId = form.data['bunnyId'],
-            userId =form.data['userId'],
-            choreId =form.data['choreId'],
+            bunnyId=form.data['bunnyId'],
+            userId=form.data['userId'],
+            choreId=form.data['choreId'],
             # bunnyComplete=form.data['bunnyComplete'],
             # userComplete=form.data['userComplete'],
             address=form.data['address'],
@@ -29,18 +31,21 @@ def create_chore():
         )
         db.session.add(chore)
         db.session.commit()
+        return chore.to_dict()
     return {'errors': validation_errors_to_error_messages(form.errors)}, 401
 
+
 @chore_routes.route('/<int:id>', methods=['DELETE'])
-@login_required
+# @login_required
 def chore_delete(id):
     chore = Chore.query.get(id)
     db.session.delete(chore)
     db.session.commit()
     return id
 
+
 @chore_routes.route('/<int:id>', methods=['PATCH'])
-@login_required
+# @login_required
 def chore_update(id):
     data = request.json
     chore = Chore.query.get(id)

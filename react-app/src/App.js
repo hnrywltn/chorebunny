@@ -12,6 +12,7 @@ import Profile from './components/Profile/Profile';
 import ChoreTypeSignupForm from './components/ChoreTypeSignup/ChoreTypeSignupForm';
 import Splashpage from './components/Splashpage/Splashpage';
 import { authenticate } from './store/session';
+import ChoreForm from './components/ChoreForm/ChoreForm';
 
 function App() {
   const [loaded, setLoaded] = useState(false);
@@ -21,21 +22,36 @@ function App() {
     (async () => {
       await dispatch(authenticate());
       setLoaded(true);
-//MIGHT NEED TO COMMENT THE REST OF THIS USEEFFECT OUT!
-  //NOW I REMEBER _ WE COMMENTED THIS OUT BECAUSE WE WERE JUST FETCHING
-      let result = await fetch('/api/users/1', {
-        method: 'PATCH',
+      //MIGHT NEED TO COMMENT THE REST OF THIS USEEFFECT OUT!
+      //NOW I REMEBER _ WE COMMENTED THIS OUT BECAUSE WE WERE JUST FETCHING
+      // let result = await fetch('/api/users/1', {
+      //   method: 'PATCH',
+      //   headers: {
+      //     'Content-Type': 'application/json'
+      //   },
+      //   body: JSON.stringify({
+      //     "address": "demo street, demo city, DM",
+      //     "bio": "Hello, I am the demo user",
+      //     "email": "demo@aa.io",
+      //     "isBunny": true,
+      //     "id": 1,
+      //     "name": "Demo User",
+      //     "username": "demo"
+      //   })
+      // })
+      let results = await fetch('/api/chores', {
+        method: 'post',
         headers: {
           'Content-Type': 'application/json'
         },
         body: JSON.stringify({
-          "address": "demo street, demo city, DM",
-          "bio": "Hello, I am the demo user",
-          "email": "demo@aa.io",
-          "isBunny": true,
-          "id": 1,
-          "name": "Demo User",
-          "username": "demo"
+          "bunnyId": 1,
+          "userId": 2,
+          "choreId": 10,
+          "address": '1234 testing street',
+          "detail": 'testing testing testing ',
+          "total": 45,
+
         })
       })
     })();
@@ -67,6 +83,9 @@ function App() {
         </Route>
         <Route path='/' exact={true} >
           <Home />
+        </Route>
+        <Route path='/choreForm'>
+          <ChoreForm />
         </Route>
       </Switch>
     </BrowserRouter>

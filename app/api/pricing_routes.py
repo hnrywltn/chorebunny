@@ -19,8 +19,8 @@ def pricing_create():
   form['csrf_token'].data = request.cookies['csrf_token']
   if form.validate_on_submit():
     price = Pricing(
-      userId = form.data['user_id'],
-      choreId = form.data['chore_id'],
+      userId = form.data['userId'],
+      choreId = form.data['choreId'],
       rate = form.data['rate']
     )
   db.session.add(price)
