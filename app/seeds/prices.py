@@ -247,7 +247,7 @@ def seed_pricings():
     ])
 
 
-db.session.commit()
+    db.session.commit()
 
 
 def undo_pricings():
