@@ -1,3 +1,4 @@
+
 import os
 from flask import Flask, render_template, request, session, redirect
 from flask_cors import CORS
@@ -36,7 +37,7 @@ app.register_blueprint(user_routes, url_prefix='/api/users')
 app.register_blueprint(auth_routes, url_prefix='/api/auth')
 app.register_blueprint(chore_type_routes, url_prefix='/api/chore_types')
 app.register_blueprint(chore_routes, url_prefix='/api/chores')
-app.register_blueprint(pricing_routes, url_prefix='/api/pricing')
+app.register_blueprint(pricing_routes, url_prefix='/api/pricings')
 db.init_app(app)
 Migrate(app, db)
 
