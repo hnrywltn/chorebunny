@@ -142,9 +142,9 @@ function Profile() {
   if (completedChores.length) {
     completeDom = completedChores.map(chore => {
       return (
-        <div className="choresComplete">
+        <div className="choreTableChoreC">
           <div>{user.name}</div>
-          <div>Bunny {users[chore?.bunnyId].name}</div>
+          <div>Bunny {users[chore?.bunnyId]?.name}</div>
           <div>total: {chore.total}</div>
         </div>
       )
@@ -155,12 +155,16 @@ function Profile() {
   if (incompleteChores.length) {
     incompleteDom = incompleteChores.map(chore => {
       return (
-        <div className="choresInProgress">
-          <div>{user.name}</div>
-          <div>{choreTypes[chore?.choreId]?.category}: {choreTypes[chore.choreId].chore}</div>
-          <div>{chore.detail}</div>
-          <div>Bunny {users[chore?.bunnyId].name}</div>
-          <div>total: {chore.total}</div>
+        <div className="choreTableChoreI">
+          <div className="inChor-name">{users[chore?.userId]?.name}</div>
+          <div className="inChor-typeAndCat">{choreTypes[chore?.choreId]?.category}: {choreTypes[chore.choreId].chore}</div>
+          <div className="inChor-detail">{chore.detail}</div>
+          <div className="inChor-bunny">Bunny {users[chore?.bunnyId].name}</div>
+          <div className="inChor-total">total: {chore.total}</div>
+          <div className="inChorBttns">
+            <button>Complete</button>
+            <button>Delete</button>
+          </div>
         </div>
       )
     })
