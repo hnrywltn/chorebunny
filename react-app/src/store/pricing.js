@@ -84,13 +84,13 @@ const pricingsReducer = (state = initialState, action) => {
     case ADD:
       const newState = {
         ...state,
-        [action.pricing.id]: action.pricing,
+        [action.pricing.id] : action.pricing,
       };
       return newState;
     case DELETE_PRICING:
       const priceToDelete = {...state}
-      delete priceToDelete[action.price.id]
-      return priceToDelete
+      delete priceToDelete[action.price.message]
+      return priceToDelete;
     default:
       return state;
   }
