@@ -4,8 +4,9 @@ import { useSelector, useDispatch} from 'react-redux';
 import { Link } from 'react-router-dom';
 import {getChoreTypes} from '../../store/choreType.js';
 import {getUsers} from '../../store/user.js';
-import {getPricings} from '../../store/pricing.js';
 import { updateBioThunk } from '../../store/session.js';
+import {getPricings, addPricing} from '../../store/pricing.js';
+import {getChores} from '../../store/chore.js';
 import './profilepage.css';
 
 
@@ -13,7 +14,9 @@ function Profile() {
 
   const dispatch = useDispatch();
 
-  
+  const [rate, setRate] = useState('rate per hour');
+  const [choreType, setChoreType] = useState(null);
+
   const choreTypes = useSelector(state => {
     return state.choreType;
   });
@@ -33,8 +36,9 @@ function Profile() {
   const pricing = useSelector(state => {
     return Object.values(state.pricings);
   });
-
-  console.log('===============>>>>>',user.isBunny);
+  const chores = useSelector(state => {
+    return Object.values(state.chores);
+  });
 
 
 
@@ -51,13 +55,13 @@ function Profile() {
     dispatch(getChoreTypes());
     dispatch(getUsers());
     dispatch(getPricings());
+    dispatch(getChores());
     setClick(0);
   }, [dispatch, click]);
 
+
 /////////////////////
   const usersPricing = pricing?.filter(price => price.userId === user.id);
-
-  
   const handelclick = () => {
     setClick(1)
     const userInfo = {
@@ -66,13 +70,101 @@ function Profile() {
     dispatch(updateBioThunk(user.id, userInfo ))
   }
   
+
+  const usersChores = chores?.filter(chore => chore.userId === user.id || chore.bunnyId === user.id);
+  const completedChores = usersChores?.filter(chore => chore.userComplete && chore.bunnyComplete);
+  const incompleteChores = usersChores?.filter(chore => !chore.userComplete || !chore.bunnyComplete);
+  const usersAvaiableChoreTypes = null; //FIXXXXXXXXX
+
+
+
+  console.log('allUserChore', usersChores);
+  console.log('complete', completedChores);
+  console.log('in progress', incompleteChores);
+
+
   let bunnyDom = null;
+  let completeDom = null;
+  let incompleteDom = null;
+
+
+
+  const handleSubmit = async(e) => {
+    e.preventDefault();
+    const userId = user.id;
+    const choreId = Number(choreType);
+    const payload = {
+      rate: rate,
+      userId:userId,
+      choreId: choreId
+    }
+    console.log(choreId)
+    await dispatch(addPricing(payload));
+    return;
+  }
+
+
+
+
+
+  let pricingForm = (
+    <form className="pricingForm" onSubmit={handleSubmit}>
+      <div>
+        {/* <label>Chore Type</label> */}
+        <select
+          className="choreType"
+          value={choreType}
+          onChange={e => setChoreType(e.target.value)}
+        >
+          {Object.values(choreTypes).map(choreType => {
+            return <option key={choreType.id} value={choreType.id}>{`${choreType.category}: ${choreType.chore}`}</option>;
+          })}
+        </select>
+      </div>
+
+      <div>
+        <input
+          type="number"
+          name="rate"
+          value={rate}
+          placeholder={rate}
+          onChange={e => setRate(e.target.value)}
+        />
+      </div>
+      <button className='addPriceButton' type='submit'>ADD</button>
+    </form>
+  );
+
+
+  if (completedChores.length) {
+    completeDom = completedChores.map(chore => {
+      return (
+        <div className="chore-complete">
+          test
+        </div>
+      )
+    })
+
+  }
+
+  if (incompleteChores.length) {
+    incompleteDom = incompleteChores.map(chore => {
+      return (
+        <div className="chore-incomplete">
+          test incomplete
+        </div>
+      )
+    })
+
+  }
 
   if (user?.isBunny) {
     bunnyDom = (
+
       <div className="profilepage-pricingTable">
         <h2 className="pricingTable-title">PRICINGS</h2>
-        {usersPricing.map(price => {
+        {pricingForm}
+        {usersPricing.map((price, i) => {
           return (
             <>
               <div className="bunnyChoreDataName">
@@ -86,10 +178,6 @@ function Profile() {
             );
           }
         )}
-
-      <Link className="profilepage-editPricing" href="/chore-type-signup">
-        SIGN-UP/EDIT CHORES
-      </Link>
       </div>
     )
   }
@@ -129,12 +217,15 @@ function Profile() {
       </div>
 
       <div className="profilepage-chores">
+        <h2 className="choreTable-title">Chores</h2>
         <div className="choresInProgress">
           CHORES IN PROGRESS
+          {incompleteDom}
         </div>
 
         <div className="choresComplete">
           CHORES COMPLETE
+          {completeDom}
         </div>
       </div>
 
