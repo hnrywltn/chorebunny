@@ -21,6 +21,8 @@
   grid-row: 4 / 18;
   grid-column:14 / 20;
   overflow: scroll;
+  background-color: rgba(245, 245, 245, 0.733);
+  border-radius: 10px;
 }
 
 .pricingForm {
@@ -76,7 +78,7 @@ button {
   grid-row: 1 / 2;
   justify-content: center;
   align-items: center;
-
+  /* background-color: rgba(129, 148, 233, 0.733); */
 }
 
 .bunnyChoreDataName{
@@ -127,14 +129,114 @@ button {
 }
 
 .profilepage-chores {
-  grid-column: 7 / 13;
+  display: grid;
+  grid-template-rows: repeat(2, 50%);
+  grid-column: 5 / 13;
   grid-row: 4 / 18;
+  background-color: rgba(245, 245, 220, 0.842);
+  border-radius: 10px;
+  box-shadow: inset 0px 0px 5px rgba(67, 102, 219, 0.603);
 }
 
 .choresInProgress {
-
+  display: grid;
+  grid-template-rows: auto;
+  grid-row: 1;
+  overflow: scroll;
+  box-shadow: inset 0px 0px 5px rgba(67, 102, 219, 0.603);
 }
 
 .choresComplete {
+  display: grid;
+  grid-template-rows: auto;
+  grid-row: 2;
+  overflow: scroll;
+  box-shadow: inset 0px 0px 5px rgba(67, 102, 219, 0.603);
+}
 
+.choreTableChoreC {
+  display: grid;
+  grid-template-rows: repeat(2, 50%);
+  /* grid-template-columns: repeat(); */
+
+}
+
+.choreTableChoreI {
+  height: 85px;
+  /* width: 90%; */
+  display: grid;
+  padding: 5px;
+  box-shadow: inset 0px 0px 5px rgba(67, 102, 219, 0.603);
+  /* grid-template-rows: repeat(2, 50%); */
+  grid-template-columns: repeat(11, 8.8%);
+
+}
+
+
+.inChor-name {
+  display: flex;
+  justify-content: center;
+  align-items:center;
+  grid-row: 1 / 2;
+  grid-column: 1 / 2;
+  box-shadow: inset 0px 0px 5px rgba(0, 0, 0, 0.479);
+  padding: 10px;
+}
+
+.inChor-typeAndCat {
+  display: flex;
+  justify-content: center;
+  align-items:center;
+  grid-row: 1 / 2;
+  grid-column: 2 / 4;
+  box-shadow: inset 0px 0px 5px rgba(0, 0, 0, 0.479);
+  padding: 10px;
+
+}
+
+.inChor-detail {
+  display: flex;
+  justify-content: center;
+  align-items:center;
+  grid-row: 1 / 2;
+  grid-column: 4 / 8;
+  box-shadow: inset 0px 0px 5px rgba(0, 0, 0, 0.479);
+  overflow: scroll;
+  padding: 10px;
+
+}
+
+.inChor-bunny {
+  display: flex;
+  justify-content: center;
+  align-items:center;
+  grid-row: 1 / 2;
+  grid-column: 8 / 10;
+  box-shadow: inset 0px 0px 5px rgba(0, 0, 0, 0.479);
+  padding: 10px;
+
+}
+
+.inChor-total {
+  display: flex;
+  justify-content: center;
+  align-items:center;
+  grid-row: 1 / 2;
+  grid-column: 10 / 11;
+  box-shadow: inset 0px 0px 5px rgba(241, 7, 7, 0.719);
+  padding: 10px;
+
+}
+
+.inChorBttns {
+
+}
+
+.inChorBttns button {
+  height: 50%;
+  border-radius: 5%;
+  box-shadow: inset 0px 0px 5px #000;
+  border: .1px solid #000;
+  color: rgb(26, 31, 36);
+  text-shadow: 0px 2px 1px rgb(255, 255, 255);
 }

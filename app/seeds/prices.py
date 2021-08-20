@@ -122,6 +122,9 @@ def seed_pricings():
     price118 = Pricing(choreId=40, userId=13, rate=20)
     price119 = Pricing(choreId=40, userId=12, rate=10)
     price120 = Pricing(choreId=40, userId=11, rate=15)
+    price121 =Pricing(choreId=16,userId=1,rate=20)
+    price122 =Pricing(choreId=21,userId=1,rate=20)
+    price123 =Pricing(choreId=26,userId=1,rate=20)
 
     db.session.add_all([
         price1,
@@ -243,7 +246,10 @@ def seed_pricings():
         price117,
         price118,
         price119,
-        price120
+        price120,
+        price121,
+        price122,
+        price123
     ])
 
 

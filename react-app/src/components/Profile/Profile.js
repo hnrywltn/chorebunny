@@ -1,38 +1,32 @@
 // import React from 'react';
-import {useEffect, useState} from 'react';
-import { useSelector, useDispatch} from 'react-redux';
-import { useParams } from 'react-router';
-import { Link } from 'react-router-dom';
-import {getChoreTypes} from '../../store/choreType.js';
-import {getUsers} from '../../store/user.js';
+import { useEffect, useState } from 'react';
+import { useSelector, useDispatch } from 'react-redux';
+// import { useParams } from 'react-router';
+// import { Link } from 'react-router-dom';
+import { getChoreTypes } from '../../store/choreType.js';
+import { getUsers } from '../../store/user.js';
 import { updateBioThunk } from '../../store/session.js';
-import {getPricings, addPricing, deletePricingThunk} from '../../store/pricing.js';
-import {getChores} from '../../store/chore.js';
+import { getPricings, addPricing, deletePricingThunk } from '../../store/pricing.js';
+import { getChores } from '../../store/chore.js';
 import './profilepage.css';
 
 
 function Profile() {
 
   const dispatch = useDispatch();
-  const {id} = useParams();
+  // const {id} = useParams();
   const [rate, setRate] = useState('rate per hour');
   const [choreType, setChoreType] = useState(null);
 
-  const choreTypes = useSelector(state => {
-    return state.choreType;
-  });
-  const users = useSelector(state => {
-    return Object.values(state.users);
-  });
-  const user = useSelector(state => {
-    return state.session.user;
-  });
+  const choreTypes = useSelector(state => state.choreType);
+  const users = useSelector(state => Object.values(state.users));
+  const user = useSelector(state => state.session.user);
   const pricings = useSelector(state => Object.values(state.pricings))
   console.log("THIS IS PRICINGS", pricings)
   const onePrice = pricings.find(price => price.id)
   const [click, setClick] = useState(0)
 
-  let isBunny = user.isBunny;
+  // let isBunny = user.isBunny;
   // const [selected, setSelected] = useState(user.isBunny);
   // console.log("this is selected", selected)
 
@@ -44,16 +38,13 @@ function Profile() {
   });
 
   //* deleting pricing-chore
-
-  
   const deleteClick = (id, e) => {
     e.preventDefault();
     // console.log("THIS IS ONE ", id)
     dispatch(deletePricingThunk(id))
     console.log("state", pricing[id])
+
   }
-
-
 
   useEffect(() => {
     dispatch(getChoreTypes());
@@ -66,51 +57,42 @@ function Profile() {
   useEffect(() => {
     dispatch(getChores());
   }, [dispatch])
-/////////////////////
   const usersPricing = pricings?.filter(price => price.userId === user.id);
+
   const handelclick = () => {
     setClick(1)
     const userInfo = {
       isBunny: true,
     }
-    dispatch(updateBioThunk(user.id, userInfo ))
+    dispatch(updateBioThunk(user.id, userInfo))
   }
-
 
   const usersChores = chores?.filter(chore => chore.userId === user.id || chore.bunnyId === user.id);
   const completedChores = usersChores?.filter(chore => chore.userComplete && chore.bunnyComplete);
   const incompleteChores = usersChores?.filter(chore => !chore.userComplete || !chore.bunnyComplete);
   const usersAvaiableChoreTypes = null; //FIXXXXXXXXX and populate drop down menu with this
 
-
-
   console.log('allUserChore', usersChores);
   console.log('complete', completedChores);
   console.log('in progress', incompleteChores);
-
 
   let bunnyDom = null;
   let completeDom = null;
   let incompleteDom = null;
 
-
-
-  const handleSubmit = async(e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
     const userId = user.id;
     const choreId = Number(choreType);
     const payload = {
       rate: rate,
-      userId:userId,
+      userId: userId,
       choreId: choreId
     }
     console.log(choreId)
     await dispatch(addPricing(payload));
     return;
   }
-
-
-
 
 
   let pricingForm = (
@@ -145,8 +127,10 @@ function Profile() {
   if (completedChores.length) {
     completeDom = completedChores.map(chore => {
       return (
-        <div className="chore-complete">
-          test
+        <div className="choreTableChoreC">
+          <div>{user.name}</div>
+          <div>Bunny {users[chore?.bunnyId]?.name}</div>
+          <div>total: {chore.total}</div>
         </div>
       )
     })
@@ -156,8 +140,16 @@ function Profile() {
   if (incompleteChores.length) {
     incompleteDom = incompleteChores.map(chore => {
       return (
-        <div className="chore-incomplete">
-          test incomplete
+        <div className="choreTableChoreI">
+          <div className="inChor-name">{users[chore?.userId]?.name}</div>
+          <div className="inChor-typeAndCat">{choreTypes[chore?.choreId]?.category}: {choreTypes[chore.choreId].chore}</div>
+          <div className="inChor-detail">{chore.detail}</div>
+          <div className="inChor-bunny">Bunny {users[chore?.bunnyId].name}</div>
+          <div className="inChor-total">total: {chore.total}</div>
+          <div className="inChorBttns">
+            <button>Complete</button>
+            <button>Delete</button>
+          </div>
         </div>
       )
     })
@@ -182,8 +174,8 @@ function Profile() {
                 {`$${price.rate}.00 per hour`}
               </div>
             </>
-            );
-          }
+          );
+        }
         )}
       </div>
     )
@@ -192,7 +184,7 @@ function Profile() {
   return (
     <div className="profilepage">
       {/* <div className="profilepage-picture-container"> */}
-        <img className="profilepage-picture" src="https://i.imgur.com/j5d5T4u.jpg" alt="profile" />
+      <img className="profilepage-picture" src="https://i.imgur.com/j5d5T4u.jpg" alt="profile" />
       {/* </div> */}
 
       <div className="profilepage-name">
@@ -208,15 +200,15 @@ function Profile() {
       </div>
       {/* this is when the user IS A BUNNY- isBunny === true */}
       {user.isBunny === false &&
-      <div className="profilepage-isBunny">
-        {/* <form onSubmit={edit}>
+        <div className="profilepage-isBunny">
+          {/* <form onSubmit={edit}>
           <label>Become a Bunny?</label>
             <input type="checkbox" onClick={() => {
               isBunny = true}} />
               <button type="submit">submit</button>
         </form> */}
-              <button onClick={handelclick}>Become a bunny</button>
-      </div>
+          <button onClick={handelclick}>Become a bunny</button>
+        </div>
       }
 
       <div className="profilepage-bio">
@@ -224,14 +216,14 @@ function Profile() {
       </div>
 
       <div className="profilepage-chores">
-        <h2 className="choreTable-title">Chores</h2>
+        {/* <h2 className="choreTable-title">Chores</h2> */}
         <div className="choresInProgress">
-          CHORES IN PROGRESS
+          <h3>CHORES IN PROGRESS</h3>
           {incompleteDom}
         </div>
 
         <div className="choresComplete">
-          CHORES COMPLETE
+          <h3>CHORES COMPLETE</h3>
           {completeDom}
         </div>
       </div>
@@ -243,4 +235,5 @@ function Profile() {
 
   );
 }
+
 export default Profile;

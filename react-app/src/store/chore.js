@@ -19,7 +19,7 @@ const edit = (chore) => ({
 });
 
 export const getChores = () => async (dispatch) => {
-  const res = await fetch(`/api/chores`);
+  const res = await fetch(`/api/chores/`);
   if(res.ok){
   const allChores = await res.json();
   dispatch(load(allChores));
@@ -28,7 +28,7 @@ export const getChores = () => async (dispatch) => {
 };
 
 export const addChore = (payload) => async (dispatch) => {
-  const res = await fetch(`/api/chores`, {
+  const res = await fetch(`/api/chores/`, {
     method: 'POST',
     headers: { 'Content-Type': 'application/json' },
     body: JSON.stringify(payload)
