@@ -13,14 +13,12 @@ const load = users => ({
 //   users
 // })
 
-
 // thunk creator:
 export const getUsers = () => async (dispatch) => {
   const res = await fetch('/api/users');
   const users = await res.json();
   dispatch(load(users));
 }
-
 
 
 //reducer:
