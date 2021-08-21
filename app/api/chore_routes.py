@@ -36,23 +36,30 @@ def create_chore():
 
 
 @chore_routes.route('/<int:id>', methods=['DELETE'])
-# @login_required
+@login_required
 def chore_delete(id):
     chore = Chore.query.get(id)
     db.session.delete(chore)
     db.session.commit()
-    return id
+    return {'message': id}
 
 
 @chore_routes.route('/<int:id>', methods=['PATCH'])
-# @login_required
+@login_required
 def chore_update(id):
     data = request.json
+    print("PRINT ME SUM DEETA", data)
     chore = Chore.query.get(id)
+    print("PRINT ME A CHORE", chore)
 
-    chore.address = data['address'] if data['address'] else chore.address
-    chore.detail = data['detail'] if data['detail'] else chore.detail
+    # chore['address'] = data['address'] if data['address'] else chore['address']
+    # chore['detail'] = data['detail'] if data['detail'] else chore['detail']
+    chore.bunnyComplete = data['bunnyComplete'] if data['bunnyComplete'] else chore.bunnyComplete
+    chore.userComplete = data['userComplete'] if data['userComplete'] else chore.userComplete
 
-    db.session.add(chore)
+    if chore.userComplete or chore.bunnyComplete:
+        chore.userComplete = chore.bunnyComplete = True
+
+    # db.session.add(chore)
     db.session.commit()
-    return chore
+    return {'message': id}

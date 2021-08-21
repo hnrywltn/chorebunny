@@ -7,7 +7,7 @@ import { getChoreTypes } from '../../store/choreType.js';
 import { getUsers } from '../../store/user.js';
 import { updateBioThunk } from '../../store/session.js';
 import { getPricings, addPricing, deletePricingThunk } from '../../store/pricing.js';
-import { getChores } from '../../store/chore.js';
+import { getChores, deleteChore, editChore } from '../../store/chore.js';
 import EditRate from '../EditRate/EditRate.js';
 import './profilepage.css';
 
@@ -59,7 +59,7 @@ function Profile() {
   }, [dispatch])
   const usersPricing = pricings?.filter(price => price.userId === user.id);
 
-  const handelclick = () => {
+  const handleClick = () => {
     setClick(1)
     const userInfo = {
       isBunny: true,
@@ -94,6 +94,20 @@ function Profile() {
     return;
   }
 
+  const handleComplete = async (e, choreId) => {
+    e.preventDefault()
+    dispatch(editChore(choreId, {
+      'bunnyComplete': true,
+      'userComplete': true
+    }))
+    window.location.reload()
+  }
+
+  const handleDelete = async (e, choreId) => {
+    e.preventDefault()
+    dispatch(deleteChore(choreId))
+    window.location.reload()
+  }
 
   let pricingForm = (
     <form className="pricingForm" onSubmit={handleSubmit}>
@@ -147,18 +161,16 @@ function Profile() {
           <div className="inChor-bunny">Bunny {users[chore?.bunnyId]?.name}</div>
           <div className="inChor-total">total: {chore.total}</div>
           <div className="inChorBttns">
-            <button>Complete</button>
-            <button>Delete</button>
+            <button onClick={e => handleComplete(e, chore?.id)}>Complete</button>
+            <button onClick={e => handleDelete(e, chore?.id)}>Delete</button>
           </div>
         </div>
       )
     })
-
   }
 
   if (user?.isBunny) {
     bunnyDom = (
-
       <div className="profilepage-pricingTable">
         <h2 className="pricingTable-title">PRICINGS</h2>
         {pricingForm}
@@ -210,7 +222,7 @@ function Profile() {
               isBunny = true}} />
               <button type="submit">submit</button>
         </form> */}
-          <button onClick={handelclick}>Become a bunny</button>
+          <button onClick={handleClick}>Become a bunny</button>
         </div>
       }
 
@@ -232,7 +244,6 @@ function Profile() {
       </div>
 
       {bunnyDom}
-
 
     </div>
 
