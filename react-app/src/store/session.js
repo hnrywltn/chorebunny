@@ -24,11 +24,6 @@ const updateUser = (users) => ({
 })
 
 
-
-
-
-
-
 const initialState = { user: null };
 
 export const authenticate = () => async (dispatch) => {
@@ -129,7 +124,7 @@ export const editUser = payload => async dispatch => {
     },
     body: JSON.stringify(payload),
   });
-  if(res.ok) {
+  if (res.ok) {
     const user = await res.json();
     dispatch(edit(user));
     return user;
@@ -137,11 +132,11 @@ export const editUser = payload => async dispatch => {
 }
 
 //* edit bio thunk
-export const updateBioThunk = (id, user) => async(dispatch) => {
+export const updateBioThunk = (id, user) => async (dispatch) => {
   console.log("this is id", id, user)
   const res = await fetch(`/api/users/${id}`, {
     method: 'PUT',
-    headers: {'Content-Type': 'application/json'},
+    headers: { 'Content-Type': 'application/json' },
     body: JSON.stringify(user)
   })
   const data = await res.json()
@@ -170,7 +165,7 @@ export default function reducer(state = initialState, action) {
       return state;
     case EDIT_BIO: //Reducer for user edit
       return {
-        user : action.users
+        user: action.users
       }
   }
 }
