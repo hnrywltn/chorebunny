@@ -8,6 +8,7 @@ import { getUsers } from '../../store/user.js';
 import { updateBioThunk } from '../../store/session.js';
 import { getPricings, addPricing, deletePricingThunk } from '../../store/pricing.js';
 import { getChores } from '../../store/chore.js';
+import EditRate from '../EditRate/EditRate.js';
 import './profilepage.css';
 
 
@@ -18,11 +19,11 @@ function Profile() {
   const [rate, setRate] = useState('rate per hour');
   const [choreType, setChoreType] = useState(null);
 
+
   const choreTypes = useSelector(state => state.choreType);
   const users = useSelector(state => Object.values(state.users));
   const user = useSelector(state => state.session.user);
   const pricings = useSelector(state => Object.values(state.pricings))
-  console.log("THIS IS PRICINGS", pricings)
   const onePrice = pricings.find(price => price.id)
   const [click, setClick] = useState(0)
 
@@ -42,9 +43,8 @@ function Profile() {
     e.preventDefault();
     // console.log("THIS IS ONE ", id)
     dispatch(deletePricingThunk(id))
-    console.log("state", pricing[id])
-
   }
+
 
   useEffect(() => {
     dispatch(getChoreTypes());
@@ -166,12 +166,15 @@ function Profile() {
           return (
             <>
               <div className="bunnyChoreDataName">
-              <button onClick={e => deleteClick(price.id, e)}>DELETE</button>
-                {choreTypes[price.choreId]?.chore}
+                {choreTypes[price?.choreId]?.chore}
               </div>
 
               <div className="bunnyChoreDataRate">
                 {`$${price.rate}.00 per hour`}
+                <div>
+                  <button onClick={e => deleteClick(price.id, e)}>DELETE</button>
+                  <EditRate pricing={price}/>
+                </div>
               </div>
             </>
           );
