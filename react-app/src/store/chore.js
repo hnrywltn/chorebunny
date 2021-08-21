@@ -18,12 +18,17 @@ const edit = (chore) => ({
   chore
 });
 
+const delChore = (choreId) => ({
+  type: DELETE,
+  choreId
+})
+
 export const getChores = () => async (dispatch) => {
   const res = await fetch(`/api/chores/`);
-  if(res.ok){
-  const allChores = await res.json();
-  dispatch(load(allChores));
-  return allChores
+  if (res.ok) {
+    const allChores = await res.json();
+    dispatch(load(allChores));
+    return allChores
   }
 };
 
@@ -40,6 +45,32 @@ export const addChore = (payload) => async (dispatch) => {
   }
 }
 
+export const deleteChore = (id) => async (dispatch) => {
+  const res = await fetch(`/api/chores/${id}`, {
+    method: 'DELETE',
+    headers: { 'Content-Type': 'application/json' },
+  })
+  if (res.ok) {
+    const data = res.json();
+    dispatch(delChore(data.message))
+    return data.message
+  }
+}
+
+export const editChore = (id, payload) => async (dispatch) => {
+  const res = await fetch(`/api/chores/${id}`, {
+    method: 'PATCH',
+    headers: { 'Content-Type': 'application/json' },
+    body: JSON.stringify(payload)
+  })
+  if (res.ok) {
+    const data = res.json();
+    dispatch(edit(data))
+  }
+}
+
+// export const editChore = (id) => async(dispatch)
+
 const initialState = {}
 const choresReducer = (state = initialState, action) => {
   switch (action.type) {
@@ -50,6 +81,17 @@ const choresReducer = (state = initialState, action) => {
       });
       return newChores;
     case ADD: {
+      return {
+        ...state,
+        [action.chore.id]: action.chore
+      }
+    }
+    case DELETE: {
+      const newState = { ...state }
+      delete newState[action.choreId]
+      return newState
+    }
+    case EDIT: {
       return {
         ...state,
         [action.chore.id]: action.chore
