@@ -142,9 +142,9 @@ function Profile() {
       return (
         <div className="choreTableChoreI">
           <div className="inChor-name">{users[chore?.userId]?.name}</div>
-          <div className="inChor-typeAndCat">{choreTypes[chore?.choreId]?.category}: {choreTypes[chore.choreId].chore}</div>
+          <div className="inChor-typeAndCat">{choreTypes[chore?.choreId]?.category}: {choreTypes[chore?.choreId]?.chore}</div>
           <div className="inChor-detail">{chore.detail}</div>
-          <div className="inChor-bunny">Bunny {users[chore?.bunnyId].name}</div>
+          <div className="inChor-bunny">Bunny {users[chore?.bunnyId]?.name}</div>
           <div className="inChor-total">total: {chore.total}</div>
           <div className="inChorBttns">
             <button>Complete</button>
@@ -173,7 +173,7 @@ function Profile() {
                 {`$${price.rate}.00 per hour`}
                 <div>
                   <button onClick={e => deleteClick(price.id, e)}>DELETE</button>
-                  <EditRate pricing={price}/>
+                  <EditRate pricing={price} />
                 </div>
               </div>
             </>
