@@ -57,11 +57,12 @@ def pricing_delete(id):
 def pricing_update(id):
   data = request.json
   price = Pricing.query.get(id)
+  print(f"/n/n/n/n")
+  print(data)
 
-  price.userId = data['userId'] if data['userId'] else price.userId
-  price.choreId = data['choreId'] if data['choreId'] else price.choreId
+  # price.userId = data['userId'] if data['userId'] else price.userId
+  # price.choreId = data['choreId'] if data['choreId'] else price.choreId
   price.rate = data['rate'] if data['rate'] else price.rate
-
-  db.session.add(price)
+  # db.session.add(price)
   db.session.commit()
-  return price
+  return {"message": id}

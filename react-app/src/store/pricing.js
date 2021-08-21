@@ -15,7 +15,7 @@ const add = (pricing) => ({
   pricing
 });
 
-const edit = (pricing) => ({
+const editPricing = (pricing) => ({
   type: EDIT,
   pricing
 });
@@ -70,6 +70,22 @@ export const deletePricingThunk = (id) => async(dispatch) => {
   }
 }
 
+//? edit price/rate think
+
+export const editPricingThunk = (id, payload) => async(dispatch) => {
+  // console.log("edit thunk id", id)
+  const res = await fetch(`/api/pricings/${id}`, {
+    method: 'PATCH',
+    headers: {
+      'Content-Type': 'application/json',
+    },
+    body: JSON.stringify(payload)
+  })
+  const data = res.json();
+  dispatch(editPricing(data))
+}
+
+
 
 
 const initialState = {}
@@ -91,6 +107,11 @@ const pricingsReducer = (state = initialState, action) => {
       const priceToDelete = {...state}
       delete priceToDelete[action.price.message]
       return priceToDelete;
+    case EDIT:
+      return {
+        ...state,
+        ...action.pricing
+      }    
     default:
       return state;
   }
