@@ -183,11 +183,11 @@ function Profile() {
 
               <div className="bunnyChoreDataRate">
                 {`$${price.rate}.00 per hour`}
-                <div>
+              </div>
+                <div className="deleteandratePrice">
                   <button onClick={e => deleteClick(price.id, e)}>DELETE</button>
                   <EditRate pricing={price} />
                 </div>
-              </div>
             </>
           );
         }

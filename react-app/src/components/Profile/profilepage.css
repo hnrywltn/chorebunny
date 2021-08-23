@@ -90,6 +90,13 @@ button {
   height: 75px;
 }
 
+.deleteandratePrice {
+  display: flex;
+  height: 100%;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
 .bunnyChoreDataRate {
   background-color: rgba(245, 245, 245, 0.733);
   display: flex;
@@ -155,10 +162,10 @@ button {
 }
 
 .choreTableChoreC {
-  display: grid;
-  grid-template-rows: repeat(2, 50%);
+  display: flex;
+  /* grid-template-rows: repeat(2, 50%); */
   /* grid-template-columns: repeat(); */
-
+  justify-content: row;
 }
 
 .choreTableChoreI {
