@@ -1,7 +1,13 @@
 .login-form {
     grid-row: 6 / end;
-    grid-column: 7 / 16;
-    display: grid;
+    grid-column: 9 / 16;
+    display: flex;
+    justify-content: center;
+    width: 300px;
+    height: 200px;
+    border: black;
+    background-color: #1f539288;
+    /* display: grid;
     grid-template-columns:repeat(20 ,5%);
-    grid-template-rows: repeat(20, 5%);
+    grid-template-rows: repeat(20, 5%); */
 }
