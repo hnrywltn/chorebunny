@@ -74,21 +74,27 @@ function App() {
         <Route path='/sign-up' exact={true}>
           <SignUpForm />
         </Route>
+
         <ProtectedRoute path='/profile' exact={true} >
           <Profile />
         </ProtectedRoute>
+
         <ProtectedRoute path='/chore-type-signup' exact={true} >
           <ChoreTypeSignupForm />
         </ProtectedRoute>
+
         <Route path='/splash' exact={true} >
           <Splashpage />
         </Route>
+
         <ProtectedRoute path='/' exact={true} >
           <Home />
         </ProtectedRoute>
+
         <Route path='/choreForm'>
           <ChoreForm />
         </Route>
+        
       </Switch>
     </BrowserRouter>
   );

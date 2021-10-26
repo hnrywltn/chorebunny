@@ -7,6 +7,7 @@ import { getPricings } from '../../store/pricing.js';
 import { getChores } from '../../store/chore.js';
 import { addChore } from '../../store/chore.js';
 import '../forms.css'
+import './ChoreForm.css'
 
 const ChoreForm = () => {
     const { id } = useParams();
@@ -72,54 +73,60 @@ const ChoreForm = () => {
     let pricing = pricings.filter(pricing => pricing.choreId == choreId);
 
     choreForm = (
-        <div className='form formstyle form-container'>
-            <form className='form formstyle' onSubmit={choreSubmit}>
-                <div>
-                    {errors.map((error, ind) => (
-                        <div key={ind}>{error}</div>
-                    ))}
-                </div>
-                <div>
-                    <label>Address</label>
-                    <input
-                        type='text'
-                        name='address'
-                        value={address}
-                        onChange={updateAddress} />
-                </div>
-                <div>
-                    <label>Detail</label>
-                    <input
-                        type='text'
-                        name='detail'
-                        value={detail}
-                        onChange={updateDetail} />
-                </div>
-                <button type='submit'>Chore Submit</button>
-            </form>
+        <div className='chore-form'>
+            <div className='form formstyle form-container'>
+                <form className='form formstyle' onSubmit={choreSubmit}>
+                    <div>
+                        {errors.map((error, ind) => (
+                            <div key={ind}>{error}</div>
+                        ))}
+                    </div>
+                    <div>
+                        <label>Address</label>
+                        <input
+                            type='text'
+                            name='address'
+                            value={address}
+                            onChange={updateAddress} />
+                    </div>
+                    <div>
+                        <label>Detail</label>
+                        <input
+                            type='text'
+                            name='detail'
+                            value={detail}
+                            onChange={updateDetail} />
+                    </div>
+                    <button type='submit'>Chore Submit</button>
+                </form>
+            </div>
         </div>
     )
     bunnyForm = (
-        <div className='form formstyle form-container'>
-            <form onSubmit={bunnySubmit}>
-                {pricing.map(price => {
-                    return (
-                        <div key={price.userId}>
-                            <label>
-                                <input
-                                    type='radio'
-                                    value={price.userId}
-                                    onChange={e => setBunnyId(e.target.value)}
-                                />
-                                {users[price.userId]?.name}
-                                {price.rate}
-                            </label >
-                        </div >
-                    )
-                })}
-                <button type='submit'>Bunny Select</button>
-            </form >
-        </div >
+        <div className='bunny-form'>
+            <div className='form formstyle form-container'>
+                <form className='form formstyle' onSubmit={bunnySubmit}>
+                    {pricing.map(price => {
+                        return (
+                            <div key={price.userId}>
+                                <label>
+                                    <input
+                                        type='radio'
+                                        value={price.userId}
+                                        onChange={e => setBunnyId(e.target.value)}
+                                    />
+                                    {users[price.userId]?.name}
+                                    <div>
+                                        ${price.rate} per hour
+                                    </div>
+                                </label >
+                            </div >
+                        )
+                    })}
+                    <button type='submit'>Bunny Select</button>
+                </form >
+            </div >
+        </div>
     )
     // let formDom = showBunnySelectionForm ? bunnyForm : choreForm;
     return (
