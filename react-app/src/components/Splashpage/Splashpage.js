@@ -7,7 +7,7 @@ function Splashpage() {
         <div className="wrapper">
             <div className="about-us">
                 <img className="about-logo" src="https://imgur.com/qKdCNty.png" alt="about-logo"></img>
-                <p className="about-cb">    This is a clone of TaskRabbit, we have multiple categories and chores that our bunnies can fufill! You can even become one yourself! Sign-up TODAY!
+                <p className="about-cb">    This is a clone of TaskRabbit, we have multiple categories and chores that our bunnies can fulfill! You can even become one yourself! Sign-up TODAY!
                 </p>
             </div>
             <div className="feature-chore">
@@ -15,23 +15,23 @@ function Splashpage() {
                 <div className="features">
                     <li>
                         Misc.
-                        <p> this is the description</p>
+                        <p> No matter the chore our bunnies can help!</p>
                     </li>
                     <li>
                         Birthday
-                        <p> this is the description</p>
+                        <p> Need a special event planned? Let one of our bunnies figure out the details for you.</p>
                     </li>
                     <li>
                         Car Cleaning
-                        <p> this is the description</p>
+                        <p> Dirty car? A bunny can get it spick and span.</p>
                     </li>
                     <li>
                         Groceries
-                        <p> this is the description</p>
+                        <p> Find a bunny to stock your fridge, shop for little things to make your life more complete.</p>
                     </li>
                     <li>
                         Dog walking
-                        <p> this is the description</p>
+                        <p> Is your pet bored? Find a bunny that will take them for walks.</p>
                     </li>
                 </div>
             </div>

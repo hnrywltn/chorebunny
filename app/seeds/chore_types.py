@@ -35,7 +35,7 @@ def seed_chore_types():
   chore32 = ChoreType(category="Personal Assistant", chore="Scheduling", description="You're to busy to keep a calendar. Find a bunny to help schedule calendar events")
   chore33 = ChoreType(category="Personal Assistant", chore="Driving", description="HOV is best....always.. get a bunny for a plus one!")
   chore34 = ChoreType(category="Personal Assistant", chore="Calling", description="People are calling you all the time because you're too popular? Get someone to answer your calls.")
-  chore35 = ChoreType(category="Personal Assistant", chore="Groceries", description="Find a bunny to stock your fridge, shop for little things to make your life more complete")
+  chore35 = ChoreType(category="Personal Assistant", chore="Groceries", description="Find a bunny to stock your fridge, shop for little things to make your life more complete.")
   chore36 = ChoreType(category="Pet Care", chore="Feeding", description="Need somone to feed Kujo because you're afraid he's going to eat you? Find a bunny to keep up with his feeding schedule.")
   chore37 = ChoreType(category="Pet Care", chore="Walking", description="Is your pet bored? Find a bunny that will take them for walks.")
   chore38 = ChoreType(category="Pet Care", chore="Grooming", description="Is your pet not looking their best? Find a bunny to come buy and give them a shave.")
