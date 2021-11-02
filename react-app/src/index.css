@@ -21,3 +21,7 @@ html, body {
   grid-template-columns: repeat(20, 5vw);
   grid-template-rows: repeat(20, 5vh);
 }
+
+button:hover{
+  cursor: pointer;
+}
