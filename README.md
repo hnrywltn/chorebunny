@@ -2,7 +2,7 @@
 
 By: Anthony Huynh, Henry Walton, Johnathan Yih, and Jonathan Chan - Live site: *[ChoreBunny](https://chorebunnies.herokuapp.com/)*
 
-ChoreBunny is an inspiration from *[taskrabbit](https://www.taskrabbit.com/)*. It is a Full Stack React Redux application with a Python backend that incorporates FLask and SQLAlchemy. The database system uses PostgreSQL and the site is hosted on Heroku. 
+ChoreBunny is an inspiration from *[taskrabbit](https://www.taskrabbit.com/)*. It is a Full Stack React Redux application with a Python backend that incorporates Flask and SQLAlchemy. The database system uses PostgreSQL and the site is hosted on Heroku. 
 
 
 ## Installation
